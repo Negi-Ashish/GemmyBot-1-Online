@@ -1,3 +1,3 @@
 import os
-#BOT_TOKEN = os.environ['BOT_TOKEN']
-BOT_TOKEN = "OTg5MDc3NzU4MzkzMDc3NzYy.GzbMFV.3meQ-NzyRQH-wSpIJ5WZB9yCpezHdQLW6XJj1o"
+BOT_TOKEN = os.environ['BOT_TOKEN']
+#BOT_TOKEN = "OTg5MDc3NzU4MzkzMDc3NzYy.GzbMFV.3meQ-NzyRQH-wSpIJ5WZB9yCpezHdQLW6XJj1o"
