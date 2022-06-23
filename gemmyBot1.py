@@ -104,7 +104,3 @@ async def on_reaction_add(reaction, user):
 #     with open("bank.json","w") as f:
 #         json.dump(users,f)
 
-
-
-if __name__ == "__main__":
-    client.run(const.BOT_TOKEN)
