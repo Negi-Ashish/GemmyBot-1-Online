@@ -1,1 +1,1 @@
-worker: python keepBotOnline.py
+worker: python multipleRunner.py
