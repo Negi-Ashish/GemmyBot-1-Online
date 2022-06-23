@@ -17,7 +17,7 @@ from threading import Thread
 
 
 def Task1():
-    client.start(const.BOT_TOKEN)
+    asyncio.run(client.start(const.BOT_TOKEN))
 
 def Task2():
     app.run(debug=False)
