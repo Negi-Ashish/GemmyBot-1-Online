@@ -17,13 +17,13 @@ from threading import Thread
 
 
 def Task1():
-    client.run(const.BOT_TOKEN)
+    client.start(const.BOT_TOKEN)
 
 def Task2():
     app.run(debug=False)
 
 def Task3():
-    client.run(const.TEST_BOT_TOKEN)
+    client.start(const.TEST_BOT_TOKEN)
 
 
 if __name__ == "__main__":
