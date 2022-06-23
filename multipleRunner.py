@@ -9,29 +9,29 @@ from threading import Thread
 
 
 
-# def Task1():
-#     loop = asyncio.get_event_loop()
-#     loop.create_task(client.start(const.BOT_TOKEN))
-#     loop.create_task(client2.start(const.TEST_BOT_TOKEN))
-#     loop.run_forever()
+def Task1_main():
+    loop = asyncio.get_event_loop()
+    loop.create_task(client.start(const.BOT_TOKEN))
+    loop.create_task(client2.start(const.TEST_BOT_TOKEN))
+    loop.run_forever()
 
 
 def Task1():
-    # client.start(const.BOT_TOKEN)
-    asyncio.run(client.run())
+    client.start(const.BOT_TOKEN)
 
 def Task2():
     app.run(debug=False)
 
 def Task3():
-    # client2.start(const.TEST_BOT_TOKEN)
-    asyncio.run(client2.run())
+    client.start(const.TEST_BOT_TOKEN)
+
 
 if __name__ == "__main__":
-    t1 = Thread(target=Task1)
-    t2 = Thread(target=Task2)
-    t3 = Thread(target=Task3)
+    # t1 = Thread(target=Task1)
+    # t2 = Thread(target=Task2)
+    # t3 = Thread(target=Task3)
 
-    t1.start()
-    t2.start()
-    t3.start()
+    # t1.start()
+    # t2.start()
+    # t3.start()
+    Task1_main()
