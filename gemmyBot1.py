@@ -2,14 +2,17 @@ from dis import disco
 import discord;
 from discord.ext import commands;
 import config.constants as const;
-import os;
-import json;
-import random;
+
 
 
 
 client = commands.Bot(command_prefix='*')
 # os.chdir("X:\GemmyBot-1-Online\economy")
+
+
+
+
+
 
 @client.event
 async def on_ready():
