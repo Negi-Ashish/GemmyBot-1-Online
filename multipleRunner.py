@@ -24,8 +24,8 @@ def Task2():
     app.run(debug=False)
 
 def Task3():
-    client2.start(const.TEST_BOT_TOKEN)
-
+    # client2.start(const.TEST_BOT_TOKEN)
+    asyncio.run(client2)
 
 if __name__ == "__main__":
     t1 = Thread(target=Task1)
