@@ -3,7 +3,6 @@ import asyncio
 from pydoc import cli
 from gemmyBot1 import client
 from gemmyTestBot import client2
-from botOneDB import app
 import config.constants as const;
 from threading import Thread
 
@@ -16,14 +15,14 @@ def Task1_main():
     loop.run_forever()
 
 
-def Task1():
-    client.start(const.BOT_TOKEN)
+# def Task1():
+#     client.start(const.BOT_TOKEN)
 
-def Task2():
-    app.run(debug=False)
+# def Task2():
+#     app.run(debug=False)
 
-def Task3():
-    client.start(const.TEST_BOT_TOKEN)
+# def Task3():
+#     client.start(const.TEST_BOT_TOKEN)
 
 
 if __name__ == "__main__":
