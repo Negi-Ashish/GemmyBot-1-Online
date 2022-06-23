@@ -9,5 +9,5 @@ if __name__ == "__main__":
     loop = asyncio.get_event_loop()
     loop.create_task(client.start(const.BOT_TOKEN))
     loop.create_task(client2.start(const.TEST_BOT_TOKEN))
-    loop.create_task(app.start())
+    loop.create_task(app.run())
     loop.run_forever()
