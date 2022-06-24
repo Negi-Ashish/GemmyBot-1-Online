@@ -1,3 +1,2 @@
 discord.py==1.7.3
-Flask==2.1.1
-Flask_SQLAlchemy==2.5.1
+requests==2.27.1
