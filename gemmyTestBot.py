@@ -12,5 +12,9 @@ async def test(ctx, arg):
 
 @client2.command()
 async def test_api(ctx):
+    await call_api()
+    
+
+async def call_api():
     api_url = "https://gemmy-bot-one-db.herokuapp.com/test_read"
-    await requests.get(api_url)
+    requests.get(api_url)
