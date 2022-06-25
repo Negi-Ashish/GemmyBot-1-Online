@@ -70,7 +70,7 @@ async def balance(ctx):
 @client.command()
 async def earn(ctx):
     await open_account(ctx.author)
-    earnings_message = earn_gem(ctx.author)
+    earnings_message = await earn_gem(ctx.author)
     await ctx.send(earnings_message)
 
 
