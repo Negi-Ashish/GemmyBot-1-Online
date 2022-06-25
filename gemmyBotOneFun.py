@@ -18,7 +18,7 @@ async def open_account(user):
 async def check_existance(userID):
     try:
         api_url = f"""{const.CHECK_ACCOUNT}?userID={userID}"""
-        response=requests.get(api_url)
+        response=requests.get(api_url).json()
         print(response)
         return response['existance']
     except:
