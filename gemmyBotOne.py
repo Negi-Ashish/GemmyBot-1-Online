@@ -3,7 +3,7 @@ from discord.ext import commands;
 import config.constants as const;
 import json;
 import random;
-from gemmyBotOneFun import open_account,get_balance,earn_gem;
+from gemmyBotOneFun import open_account,get_balance,earn_gem,SPS;
 
 client = commands.Bot(command_prefix='!gemmy ')
 # os.chdir("X:\GemmyBot-1-Online\economy")
@@ -73,6 +73,13 @@ async def earn(ctx):
     earnings_message = await earn_gem(ctx.author.id)
     em = discord.Embed(title = f"{ctx.author.name}'s earnings",color =discord.Color.red(),description=earnings_message)
     await ctx.send(embed = em)
+
+
+@client.command()
+async def bet(ctx,game_name):
+    if game_name=="SPS":
+        SPS(ctx)
+
 
 
 

@@ -1,6 +1,7 @@
 import config.constants as const;
 import requests;
-
+import discord;
+from discord.ext import commands;
 
 async def open_account(user):
     existance = await check_existance(user.id)
@@ -42,3 +43,14 @@ async def earn_gem(userID):
         return response['message']
     except:
         print("There was a Error in earn_gem")
+
+
+
+async def SPS(ctx):
+    try:
+        info_message = "STONE || PAPER || SCISSOR   please select your choice."
+        em = discord.Embed(title = f" STONE | PAPER | SCISSOR ",color =discord.Color.red(),description=info_message)
+        message = await ctx.send(embed=em)
+        await message.add_reaction('\U0001F917')
+    except:
+        pass
