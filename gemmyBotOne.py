@@ -1,12 +1,11 @@
-from dis import disco
 import discord;
 from discord.ext import commands;
 import config.constants as const;
+import json;
+import random;
+from gemmyBotOneFun import open_account,get_balance;
 
-
-
-
-client = commands.Bot(command_prefix='*')
+client = commands.Bot(command_prefix='!gemmy ')
 # os.chdir("X:\GemmyBot-1-Online\economy")
 
 
@@ -16,7 +15,7 @@ client = commands.Bot(command_prefix='*')
 
 @client.event
 async def on_ready():
-    print("hi")
+    print("Started")
     await client.change_presence(status=discord.Status.online,activity=discord.Game("Gemmy Game"))
 
 
@@ -47,36 +46,21 @@ async def on_reaction_add(reaction, user):
         await reaction.message.channel.send(f"{user} chosed {reaction.emoji}")
 
 
-#==================================================================================================================================#
-# @client.command()
-# async def test(ctx, arg):
-#     await ctx.send(arg)
+# ==================================================================================================================================#
+@client.command()
+async def test(ctx, arg):
+    await ctx.send(arg)
 
-# @client.command()
-# async def balance(ctx):
-#     await open_account(ctx.author)
-#     users = await get_balance()
-#     user = ctx.author
-#     wallet_amount = users[str(user.id)]["wallet"]
-#     bank_amount = users[str(user.id)]["bank"]
-
-#     em = discord.Embed(title = f"{ctx.author.name}'s balance",color =discord.Color.red())
-#     em.add_field(name="Wallet Balance",value = wallet_amount)
-#     em.add_field(name="Bank Balance",value = bank_amount)
-#     await ctx.send(embed = em)
+@client.command()
+async def balance(ctx):
+    await open_account(ctx.author)
+    wallet_amount,bank_amount = await get_balance(ctx.author.id)
+    em = discord.Embed(title = f"{ctx.author.name}'s balance",color =discord.Color.red())
+    em.add_field(name="Wallet Balance",value = wallet_amount)
+    em.add_field(name="Bank Balance",value = bank_amount)
+    await ctx.send(embed = em)
 
 
-# async def open_account(user):
-#     users = await get_balance()
-#     if str(user.id) in users:
-#         return False
-#     else:
-#         users[str(user.id)]={}
-#         users[str(user.id)]["wallet"] = 0
-#         users[str(user.id)]["bank"] = 0
-
-#     await add_balance(users)
-#     return True
 
 
 # @client.command()
@@ -93,17 +77,4 @@ async def on_reaction_add(reaction, user):
 #     await add_balance(users)
 
 
-
-
-# async def get_balance():
-#     try:
-#         with open("bank.json","r") as f:
-#             users = json.load(f)
-#         return users
-#     except:
-#         print("Error")
-
-# async def add_balance(users):
-#     with open("bank.json","w") as f:
-#         json.dump(users,f)
 

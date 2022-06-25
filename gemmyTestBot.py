@@ -2,7 +2,7 @@ from discord.ext import commands;
 import config.constants as const;
 import requests
 
-client2 = commands.Bot(command_prefix='!gemmy ')
+client2 = commands.Bot(command_prefix='*')
 
 
 @client2.command()
