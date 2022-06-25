@@ -29,7 +29,7 @@ async def check_existance(userID):
 async def get_balance(userID):
     try:
         api_url = f"""{const.GET_BALANCE}?userID={userID}"""
-        response=requests.get(api_url)
+        response=requests.get(api_url).json()
         return response
     except:
         print("There was a Error in getting existance")
