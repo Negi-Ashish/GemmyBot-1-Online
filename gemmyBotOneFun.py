@@ -68,7 +68,7 @@ async def deposit_gem(userID,amount,wallet_balance,bank_balance):
             print("There was a impossible Error in deposit_gem")
             raise Exception
         account_json = {"userId":userID,"walletBalance":wallet_balance,"bankBalance":bank_balance}
-        requests.put(const.ADD_ACCOUNT, json=account_json)
+        requests.put(const.UPDATE_BALANCE, json=account_json)
         return 
     except:
         print("There was a Error in deposit_gem")
