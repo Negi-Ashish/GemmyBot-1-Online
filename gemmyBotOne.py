@@ -96,8 +96,8 @@ async def deposit(ctx,amount):
                 em = discord.Embed(title = f"Create your free account today!",color = discord.Color.red(),description=info_message)
                 await ctx.send(embed = em)
             else:
-                deposit_gem(ctx.author.id,amount,wallet_amount,bank_amount)
-                info_message = f"""Your have successfully transfered {amount} gem to your bank account, Your current balance is {(bank_amount+amount)}"""
+                await deposit_gem(ctx.author.id,amount,wallet_amount,bank_amount)
+                info_message = f"""Your have successfully transfered {amount} gem to your bank account, Your current bank balance is {(bank_amount+amount)}"""
                 em = discord.Embed(title = f"Transfer Success!",color = discord.Color.red(),description=info_message)
                 await ctx.send(embed = em)
         except:
