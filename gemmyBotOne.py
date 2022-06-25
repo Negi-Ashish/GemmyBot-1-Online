@@ -3,7 +3,7 @@ from discord.ext import commands;
 import config.constants as const;
 import json;
 import random;
-from gemmyBotOneFun import open_account,get_balance,earn_gem,SPS,check_existance,deposit_gem;
+from gemmyBotOneFun import open_account,get_balance,earn_gem,SPS,check_existance,deposit_withdraw_gem;
 
 client = commands.Bot(command_prefix='!gemmy ')
 # os.chdir("X:\GemmyBot-1-Online\economy")
@@ -93,12 +93,12 @@ async def deposit(ctx,amount):
             wallet_amount,bank_amount = balance['wallet_balance'],balance['bank_balance']
             if amount>wallet_amount:
                 info_message = f"""Your deposit amount cannot be greater than {wallet_amount}"""
-                em = discord.Embed(title = f"Create your free account today!",color = discord.Color.red(),description=info_message)
+                em = discord.Embed(title = f"INFO",color = discord.Color.red(),description=info_message)
                 await ctx.send(embed = em)
             else:
-                await deposit_gem(ctx.author.id,amount,wallet_amount,bank_amount)
-                info_message = f"""Your have successfully transfered {amount} gem to your bank account, Your current bank balance is {(bank_amount+amount)}"""
-                em = discord.Embed(title = f"Transfer Success!",color = discord.Color.red(),description=info_message)
+                await deposit_withdraw_gem(ctx.author.id,amount,wallet_amount,bank_amount,"deposit")
+                info_message = f"""Your have successfully deposited {amount} gem to your bank account, Your current bank balance is {(bank_amount+amount)}"""
+                em = discord.Embed(title = f"Deposit Success!",color = discord.Color.red(),description=info_message)
                 await ctx.send(embed = em)
         except:
             info_message = """PLease contact MOD for help"""
@@ -110,4 +110,28 @@ async def deposit(ctx,amount):
         await ctx.send(embed = em)
 
 
-
+@client.command()
+async def withdraw(ctx,amount):
+    existance = await check_existance(ctx.author.id)
+    if existance:
+        try:
+            amount = int(amount)
+            balance = await get_balance(ctx.author.id)
+            wallet_amount,bank_amount = balance['wallet_balance'],balance['bank_balance']
+            if amount>bank_amount:
+                info_message = f"""Your withdraw amount cannot be greater than {bank_amount}"""
+                em = discord.Embed(title = f"INFO",color = discord.Color.red(),description=info_message)
+                await ctx.send(embed = em)
+            else:
+                await deposit_withdraw_gem(ctx.author.id,amount,wallet_amount,bank_amount,"withdraw")
+                info_message = f"""Your have successfully withdraw {amount} gem to your bank account, Your current bank balance is {(bank_amount-amount)}"""
+                em = discord.Embed(title = f"Withdraw Success!",color = discord.Color.red(),description=info_message)
+                await ctx.send(embed = em)
+        except:
+            info_message = """PLease contact MOD for help"""
+            em = discord.Embed(title = f"Withdraw ERROR",color =discord.Color.red(),description=info_message)
+            await ctx.send(embed = em)
+    else:
+        info_message = """You currently dont have a account. Type '!gemmy balance' to create a account"""
+        em = discord.Embed(title = f"Create your free account today!",color =discord.Color.red(),description=info_message)
+        await ctx.send(embed = em)

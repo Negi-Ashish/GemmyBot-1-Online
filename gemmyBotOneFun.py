@@ -60,15 +60,19 @@ async def SPS(ctx):
 
 
 
-async def deposit_gem(userID,amount,wallet_balance,bank_balance):
+async def deposit_withdraw_gem(userID,amount,wallet_balance,bank_balance,method):
     try:
-        bank_balance=bank_balance+amount
-        wallet_balance=wallet_balance-amount
-        if(wallet_balance<0):
-            print("There was a impossible Error in deposit_gem")
+        if method=="deposit":
+            bank_balance=bank_balance+amount
+            wallet_balance=wallet_balance-amount
+        if method=="withdraw":
+            bank_balance=bank_balance-amount
+            wallet_balance=wallet_balance+amount
+        if(wallet_balance<0 or bank_balance<0):
+            print("There was a impossible Error in deposit_withdraw_gem")
             raise Exception
         account_json = {"userId":userID,"walletBalance":wallet_balance,"bankBalance":bank_balance}
         requests.put(const.UPDATE_BALANCE, json=account_json)
         return 
     except:
-        print("There was a Error in deposit_gem")
+        print("There was a Error in deposit_withdraw_gem")
