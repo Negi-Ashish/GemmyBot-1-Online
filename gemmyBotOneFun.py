@@ -81,9 +81,10 @@ async def deposit_withdraw_gem(userID,amount,wallet_balance,bank_balance,method)
 
 
 async def fortune_teller(userID,wallet_balance,bank_balance):
-    print("1")
-    await deposit_withdraw_gem(userID,wallet_balance,bank_balance,"deduct")
-    print("2")
-    message = requests.get(const.FORTUNE_TELLER).json()
-    print(message)
-    return message['message']
+    try:
+        await deposit_withdraw_gem(userID,0,wallet_balance,bank_balance,"deduct")
+        message = requests.get(const.FORTUNE_TELLER).json()
+        print(message)
+        return message['message']
+    except:
+        print("There was a Error in fortune_teller")        
