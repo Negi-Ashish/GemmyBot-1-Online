@@ -6,3 +6,4 @@ TEST_BOT_TOKEN=os.environ['TEST_BOT_TOKEN']
 CHECK_ACCOUNT = "https://gemmy-bot-one-db.herokuapp.com/check_account"
 ADD_ACCOUNT = "https://gemmy-bot-one-db.herokuapp.com/add_account"
 GET_BALANCE = "https://gemmy-bot-one-db.herokuapp.com/read_balance"
+ACCOUNT_EARN = "https://gemmy-bot-one-db.herokuapp.com/account_earn"

@@ -3,7 +3,7 @@ from discord.ext import commands;
 import config.constants as const;
 import json;
 import random;
-from gemmyBotOneFun import open_account,get_balance;
+from gemmyBotOneFun import open_account,get_balance,earn_gem;
 
 client = commands.Bot(command_prefix='!gemmy ')
 # os.chdir("X:\GemmyBot-1-Online\economy")
@@ -67,18 +67,14 @@ async def balance(ctx):
 
 
 
-# @client.command()
-# async def earn(ctx):
-#     await open_account(ctx.author)
-#     users = await get_balance()
-#     user = ctx.author
-#     earnings = random.randrange(101)
+@client.command()
+async def earn(ctx):
+    await open_account(ctx.author)
+    earnings_message = earn_gem(ctx.author)
+    await ctx.send(earnings_message)
 
-#     await ctx.send(f"You earned {earnings} gems.")
 
-#     users[str(user.id)]["wallet"] += earnings
 
-#     await add_balance(users)
 
 
 

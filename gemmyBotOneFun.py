@@ -34,3 +34,12 @@ async def get_balance(userID):
     except:
         print("There was a Error in getting existance")
 
+
+
+async def earn_gem(user):
+    try:
+        api_url = f"""{const.ACCOUNT_EARN}?userID={userID}"""
+        response=requests.put(api_url).json()
+        return response['message']
+    except:
+        print("There was a Error in adding account")
