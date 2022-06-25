@@ -72,7 +72,7 @@ async def earn(ctx):
     await open_account(ctx.author.id)
     earnings_message = await earn_gem(ctx.author)
     em = discord.Embed(title = f"{ctx.author.name}'s earnings",color =discord.Color.red())
-    em.add_field(value = earnings_message)
+    em.add_field(earnings_message)
     await ctx.send(embed = em)
 
 
