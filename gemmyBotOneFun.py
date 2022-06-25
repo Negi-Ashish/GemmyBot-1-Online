@@ -51,6 +51,10 @@ async def SPS(ctx):
         info_message = "STONE | PAPER | SCISSOR   please select your choice."
         em = discord.Embed(title = f" STONE | PAPER | SCISSOR ",color =discord.Color.red(),description=info_message)
         message = await ctx.send(embed=em)
-        await message.add_reaction('\U0001F917')
+        await message.add_reaction('\U000270A')
+        await message.add_reaction('\U0001F44B')
+        await message.add_reaction('\U000270C')
+
+
     except:
         pass
