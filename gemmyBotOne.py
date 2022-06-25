@@ -3,7 +3,7 @@ from discord.ext import commands;
 import config.constants as const;
 import json;
 import random;
-from gemmyBotOneFun import open_account,get_balance,earn_gem,SPS;
+from gemmyBotOneFun import open_account,get_balance,earn_gem,SPS,check_existance,deposit_gem;
 
 client = commands.Bot(command_prefix='!gemmy ')
 # os.chdir("X:\GemmyBot-1-Online\economy")
@@ -83,6 +83,31 @@ async def bet(ctx,game_name):
 
 
 
+@client.command()
+async def deposit(ctx,amount):
+    existance = await check_existance(ctx.author.id)
+    if existance:
+        try:
+            amount = int(amount)
+            balance = await get_balance(ctx.author.id)
+            wallet_amount,bank_amount = balance['wallet_balance'],balance['bank_balance']
+            if amount>wallet_amount:
+                info_message = f"""Your deposit amount cannot be greater than {wallet_amount}"""
+                em = discord.Embed(title = f"Create your free account today!",color = discord.Color.red(),description=info_message)
+                await ctx.send(embed = em)
+            else:
+                deposit_gem(ctx.author.id,amount,wallet_amount,bank_amount)
+                info_message = f"""Your have successfully transfered {amount} gem to your bank account, Your current balance is {(bank_amount+amount)}"""
+                em = discord.Embed(title = f"Transfer Success!",color = discord.Color.red(),description=info_message)
+                await ctx.send(embed = em)
+        except:
+            info_message = """PLease contact MOD for help"""
+            em = discord.Embed(title = f"DEPOSIT ERROR",color =discord.Color.red(),description=info_message)
+            await ctx.send(embed = em)
+    else:
+        info_message = """You currently dont have a account. Type '!gemmy balance' to create a account"""
+        em = discord.Embed(title = f"Create your free account today!",color =discord.Color.red(),description=info_message)
+        await ctx.send(embed = em)
 
 
 

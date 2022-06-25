@@ -55,6 +55,20 @@ async def SPS(ctx):
         await message.add_reaction('\U0001F44B')
         await message.add_reaction('\U0000270C')
 
-
     except:
         pass
+
+
+
+async def deposit_gem(userID,amount,wallet_balance,bank_balance):
+    try:
+        bank_balance=bank_balance+amount
+        wallet_balance=wallet_balance-amount
+        if(wallet_balance<0):
+            print("There was a impossible Error in deposit_gem")
+            raise Exception
+        account_json = {"userId":userID,"walletBalance":wallet_balance,"bankBalance":bank_balance}
+        requests.put(const.ADD_ACCOUNT, json=account_json)
+        return 
+    except:
+        print("There was a Error in deposit_gem")
