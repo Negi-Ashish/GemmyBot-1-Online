@@ -7,7 +7,6 @@ async def open_account(user):
     if(existance):
         return False
     else:
-        print("Inside else")
         try:
             account_json = {"userId":user.id,"walletBalance":0,"bankBalance":0}
             requests.post(const.ADD_ACCOUNT, json=account_json)
@@ -36,7 +35,7 @@ async def get_balance(userID):
 
 
 
-async def earn_gem(user):
+async def earn_gem(userID):
     try:
         api_url = f"""{const.ACCOUNT_EARN}?userID={userID}"""
         response=requests.put(api_url).json()
