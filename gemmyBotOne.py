@@ -3,7 +3,7 @@ from discord.ext import commands;
 import config.constants as const;
 import json;
 import random;
-from gemmyBotOneFun import open_account,get_balance,earn_gem,SPS,check_existance,deposit_withdraw_gem;
+from gemmyBotOneFun import open_account,get_balance,earn_gem,SPS,check_existance,deposit_withdraw_gem,fortune_teller;
 
 client = commands.Bot(command_prefix='!gemmy ')
 # os.chdir("X:\GemmyBot-1-Online\economy")
@@ -134,4 +134,24 @@ async def withdraw(ctx,amount):
     else:
         info_message = """You currently dont have a account. Type '!gemmy balance' to create a account"""
         em = discord.Embed(title = f"Create your free account today!",color =discord.Color.red(),description=info_message)
+        await ctx.send(embed = em)
+
+
+@client.command()
+async def fortune(ctx):
+    try:
+        balance = await get_balance(ctx.author.id)
+        wallet_amount,bank_amount = balance['wallet_balance'],balance['bank_balance']
+        if wallet_amount<50:
+            info_message = """50 gems are required for knowing your fortune"""
+            em = discord.Embed(title = f"Insufficient Balance",color =discord.Color.red(),description=info_message)
+            await ctx.send(embed = em)
+        else:
+            message=fortune_teller(ctx.author.id,wallet_amount,bank_amount)
+            em = discord.Embed(title = f"Your Fortune",color =discord.Color.red(),description=message)
+            await ctx.send(embed = em)
+
+    except:
+        info_message = """We cannot see your fortune"""
+        em = discord.Embed(title = f"Error",color =discord.Color.red(),description=info_message)
         await ctx.send(embed = em)
