@@ -53,12 +53,16 @@ async def test(ctx, arg):
 
 @client.command()
 async def balance(ctx):
-    await open_account(ctx.author)
-    wallet_amount,bank_amount = await get_balance(ctx.author.id)
-    em = discord.Embed(title = f"{ctx.author.name}'s balance",color =discord.Color.red())
-    em.add_field(name="Wallet Balance",value = wallet_amount)
-    em.add_field(name="Bank Balance",value = bank_amount)
-    await ctx.send(embed = em)
+    try:
+        await open_account(ctx.author)
+        balance = await get_balance(ctx.author.id)
+        wallet_amount,bank_amount = balance['wallet_balance'],balance['bank_balance']
+        em = discord.Embed(title = f"{ctx.author.name}'s balance",color =discord.Color.red())
+        em.add_field(name="Wallet Balance",value = wallet_amount)
+        em.add_field(name="Bank Balance",value = bank_amount)
+        await ctx.send(embed = em)
+    except:
+        print("error in balance")
 
 
 
