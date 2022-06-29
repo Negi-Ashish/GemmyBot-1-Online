@@ -59,7 +59,6 @@ async def SPS(ctx,client,amount,wallet_balance,bank_balance):
         await message.add_reaction('\U0001F44B')
         await message.add_reaction('\U0000270C')
 
-        
         reaction, user = await client.wait_for('reaction_add', check=lambda r, u: u.id == ctx.author.id,timeout=10.0)
 
         sps = {0:"stone",1:"paper",2:"scissor"}
@@ -108,8 +107,10 @@ async def SPS(ctx,client,amount,wallet_balance,bank_balance):
         
         # use user and reaction
     except:
-        info_message = "We didnt receive any inputs within 10 seconds."
-        em = discord.Embed(title = f" STONE | PAPER | SCISSOR ",color =discord.Color.red(),description=info_message)
+        sad_messages=["\nGemmy got sad as you didnt played on time.","\nYou always finish quick but today you had to be slow..?","\n I ain't got all day bro.","\n Gemmy is disappointed as you played with its feeling"]
+        info_message = sad_messages[random.randrange(0,3)]
+        em = discord.Embed(title = f"Penalty (20 gems)",color =discord.Color.red(),description=info_message)
+        await deposit_withdraw_gem(ctx.author.id,0,wallet_balance-20,bank_balance,"SPS")
         message = await ctx.send(embed=em)
 
 
