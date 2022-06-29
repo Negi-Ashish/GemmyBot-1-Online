@@ -67,11 +67,11 @@ async def SPS(ctx,client):
 
         if reaction.emoji=='\U0000270A':
             if bot_sps=="stone":
-                info_message = f"""\n{ctx.author} played stone \nGEMMY#3755 played {bot_sps} \nResult : Draw """
+                info_message = f"""\n {reaction} VS \n\{'\U0000270A'} \nResult : Draw """
             elif bot_sps=="paper":
-                info_message = f"""\n{ctx.author} played stone \nGEMMY#3755 played {bot_sps} \nResult : {ctx.author} Lost """
+                info_message = f"""\n {reaction} VS \n{'\U0000270A'} \nResult : {ctx.author} Lost """
             else:
-                info_message = f"""\n{ctx.author} played stone \nGEMMY#3755 played {bot_sps} \nResult : {ctx.author} Win """
+                info_message = f"""\n  {reaction} VS \n{'\U0000270A'} \nResult : {ctx.author} Win """
 
         elif reaction.emoji=='\U0001F44B':
             if bot_sps=="stone":
