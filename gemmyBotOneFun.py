@@ -56,7 +56,18 @@ async def SPS(ctx):
         await message.add_reaction('\U0001F44B')
         await message.add_reaction('\U0000270C')
 
+
+        reaction, user = await ctx.wait_for('reaction_add', check=lambda r, u: u.id == message.author,timeout=15.0)
+
+        print(reaction,user)
+
+        # use user and reaction
+
+
     except:
+        info_message="You took too long to react."
+        em = discord.Embed(title = f" STONE | PAPER | SCISSOR ",color =discord.Color.red(),description=info_message)
+        message = await ctx.send(embed=em)
         pass
 
 
