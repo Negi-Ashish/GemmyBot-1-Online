@@ -61,7 +61,7 @@ async def SPS(ctx,client):
         
         reaction, user = await client.wait_for('reaction_add', check=lambda r, u: u.id == ctx.author.id,timeout=10.0)
 
-        if reaction=='\U0000270A':
+        if reaction.emoji=='\U0000270A':
             print("hi")
 
         print(reaction,user)
