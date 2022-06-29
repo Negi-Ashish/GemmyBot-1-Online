@@ -88,9 +88,8 @@ async def SPS(ctx,client):
                 info_message = f"""\n{ctx.author} played scissor \nGEMMY#3755 played {bot_sps} \nResult : {ctx.author} Win """
             else:
                 info_message = f"""\n{ctx.author} played scissor \nGEMMY#3755 played {bot_sps} \nResult : Draw """
-        
-            em = discord.Embed(title = f" STONE | PAPER | SCISSOR ",color =discord.Color.red(),description=info_message)
-            message = await ctx.send(embed=em)
+        em = discord.Embed(title = f" STONE | PAPER | SCISSOR ",color =discord.Color.red(),description=info_message)
+        message = await ctx.send(embed=em)
 
         # use user and reaction
     except:
