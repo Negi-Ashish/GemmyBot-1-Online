@@ -74,17 +74,22 @@ async def earn(ctx):
 
 
 @client.command()
-async def bet(ctx,game_name,amount):
-    balance = await get_balance(ctx.author.id)
-    wallet_amount,bank_amount = balance['wallet_balance'],balance['bank_balance']
-    amount = int(amount)
-    if(amount>wallet_amount):
-        info_message = f"""Your bet amount cannot be greater than {wallet_amount}"""
-        em = discord.Embed(title = f" STONE | PAPER | SCISSOR ",color = discord.Color.red(),description=info_message)
+async def bet(ctx,game_name,amount,wallet_amount,bank_amount):
+    try:
+        balance = await get_balance(ctx.author.id)
+        wallet_amount,bank_amount = balance['wallet_balance'],balance['bank_balance']
+        amount = int(amount)
+        if(amount>wallet_amount):
+            info_message = f"""Your bet amount cannot be greater than {wallet_amount}"""
+            em = discord.Embed(title = f" STONE | PAPER | SCISSOR ",color = discord.Color.red(),description=info_message)
+            await ctx.send(embed = em)
+            return 
+        if game_name=="SPS":
+            await SPS(ctx,client,amount)
+    except:
+        info_message = f"""There is a Error in bet command."""
+        em = discord.Embed(title = f"Info",color = discord.Color.red(),description=info_message)
         await ctx.send(embed = em)
-        return 
-    if game_name=="SPS":
-        await SPS(ctx,client,amount)
 
 
 

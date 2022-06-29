@@ -50,7 +50,7 @@ async def earn_gem(userID):
 
 
 
-async def SPS(ctx,client):
+async def SPS(ctx,client,amount,wallet_balance,bank_balance):
     try:
         info_message = "\nplease select your choice within 10 seconds."
         em = discord.Embed(title = f" STONE | PAPER | SCISSOR ",color =discord.Color.red(),description=info_message)
@@ -68,29 +68,44 @@ async def SPS(ctx,client):
         if reaction.emoji=='\U0000270A':
             if bot_sps=="stone":
                 info_message = f"""\nYou played stone \nGemmy played {bot_sps} \nResult : Draw, No balance change."""
+                result = "neutral"
             elif bot_sps=="paper":
-                info_message = f"""\nYou played stone \nGemmy played {bot_sps} \nResult : Lose, You lose 50 gems."""
+                info_message = f"""\nYou played stone \nGemmy played {bot_sps} \nResult : Lose, You lose {amount} gems."""
+                result = "lose"
             else:
-                info_message = f"""\nYou played stone \nGemmy played {bot_sps} \nResult : Win, You win 50 gems."""
+                info_message = f"""\nYou played stone \nGemmy played {bot_sps} \nResult : Win, You win {amount} gems."""
+                result="win"
 
         elif reaction.emoji=='\U0001F44B':
             if bot_sps=="stone":
-                info_message = f"""\nYou played paper \nGemmy played {bot_sps} \nResult : Win, You win 50 gems."""
+                info_message = f"""\nYou played paper \nGemmy played {bot_sps} \nResult : Win, You win {amount} gems."""
+                result="win"
             elif bot_sps=="paper":
                 info_message = f"""\nYou played paper \nGemmy played {bot_sps} \nResult : Draw, No balance change."""
+                result = "neutral"
             else:
-                info_message = f"""\nYou played paper \nGemmy played {bot_sps} \nResult : Lose, You lose 50 gems."""
+                info_message = f"""\nYou played paper \nGemmy played {bot_sps} \nResult : Lose, You lose {amount} gems."""
+                result = "lose"
 
         elif reaction.emoji=='\U0000270C':
             if bot_sps=="stone":
-                info_message = f"""\nYou played scissor \nGemmy played {bot_sps} \nResult : Lose, You lose 50 gems."""
+                info_message = f"""\nYou played scissor \nGemmy played {bot_sps} \nResult : Lose, You lose {amount} gems."""
+                result = "lose"
             elif bot_sps=="paper":
-                info_message = f"""\nYou played scissor \nGemmy played {bot_sps} \nResult : Win, You win 50 gems."""
+                info_message = f"""\nYou played scissor \nGemmy played {bot_sps} \nResult : Win, You win {amount} gems."""
+                result="win"
             else:
                 info_message = f"""\nYou played scissor \nGemmy played {bot_sps} \nResult : Draw, No balance change."""
+                result = "neutral"
+        if result=="neutral":
+            pass
+        elif result=="win":
+            await deposit_withdraw_gem(ctx.author.id,0,wallet_balance+amount,bank_balance,"SPS")
+        else:
+            await deposit_withdraw_gem(ctx.author.id,0,wallet_balance-amount,bank_balance,"SPS")
         em = discord.Embed(title = f" STONE | PAPER | SCISSOR ",color =discord.Color.red(),description=info_message)
         message = await ctx.send(embed=em)
-
+        
         # use user and reaction
     except:
         info_message = "We didnt receive any inputs within 10 seconds."
@@ -104,7 +119,7 @@ async def deposit_withdraw_gem(userID,amount,wallet_balance,bank_balance,method)
         if method=="deposit":
             bank_balance=bank_balance+amount
             wallet_balance=wallet_balance-amount
-        if method=="withdraw":
+        elif method=="withdraw":
             bank_balance=bank_balance-amount
             wallet_balance=wallet_balance+amount
         if(wallet_balance<0 or bank_balance<0):
