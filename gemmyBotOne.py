@@ -2,7 +2,6 @@ import discord;
 from discord.ext import commands;
 import config.constants as const;
 import json;
-import random;
 from gemmyBotOneFun import open_account,get_balance,earn_gem,SPS,check_existance,deposit_withdraw_gem,fortune_teller;
 
 client = commands.Bot(command_prefix='!gemmy ')

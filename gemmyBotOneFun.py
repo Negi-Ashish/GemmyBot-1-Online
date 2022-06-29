@@ -4,6 +4,7 @@ from typing import final
 import config.constants as const;
 import requests;
 import discord;
+import random;
 from discord.ext import commands;
 
 async def open_account(user):
@@ -51,7 +52,7 @@ async def earn_gem(userID):
 
 async def SPS(ctx,client):
     try:
-        info_message = "STONE | PAPER | SCISSOR   \nplease select your choice within 10 seconds."
+        info_message = "\nplease select your choice within 10 seconds."
         em = discord.Embed(title = f" STONE | PAPER | SCISSOR ",color =discord.Color.red(),description=info_message)
         message = await ctx.send(embed=em)
         await message.add_reaction('\U0000270A')
@@ -61,10 +62,19 @@ async def SPS(ctx,client):
         
         reaction, user = await client.wait_for('reaction_add', check=lambda r, u: u.id == ctx.author.id,timeout=10.0)
 
-        if reaction.emoji=='\U0000270A':
-            print("stone")
+        sps = {0:"stone",1:"paper",2:"scissor"}
+        bot_sps = sps[random.randrange(0,2)]
 
-        print(reaction,user)
+        if reaction.emoji=='\U0000270A':
+            if bot_sps=="stone":
+                info_message = f"""\nPlayer-1 : {ctx.author} played STONE \nPlayer-2 : GEMMY#3755 played {bot_sps} \nResult : Draw """
+            elif bot_sps=="paper":
+                info_message = f"""\nPlayer-1 : {ctx.author} played STONE \nPlayer-2 : GEMMY#3755 played {bot_sps} \nResult : Player-1 Lost """
+            else:
+                info_message = f"""\nPlayer-1 : {ctx.author} played STONE \nPlayer-2 : GEMMY#3755 played {bot_sps} \nResult : Player-1 Win """
+
+            em = discord.Embed(title = f" STONE | PAPER | SCISSOR ",color =discord.Color.red(),description=info_message)
+            message = await ctx.send(embed=em)
 
         # use user and reaction
     except:
