@@ -67,27 +67,27 @@ async def SPS(ctx,client):
 
         if reaction.emoji=='\U0000270A':
             if bot_sps=="stone":
-                info_message = f"""\nStone VS Stone = Draw """
+                info_message = f"""\nYou played stone \nGemmy played {bot_sps} \nResult : Draw, No balance change."""
             elif bot_sps=="paper":
-                info_message = f"""\nStone VS Paper = Lost """
+                info_message = f"""\nYou played stone \nGemmy played {bot_sps} \nResult : Lose, You lose 50 gems."""
             else:
-                info_message = f"""\nStone VS Scissor = Win """
+                info_message = f"""\nYou played stone \nGemmy played {bot_sps} \nResult : Win, You win 50 gems."""
 
         elif reaction.emoji=='\U0001F44B':
             if bot_sps=="stone":
-                info_message = f"""\n{ctx.author} played paper \nGEMMY#3755 played {bot_sps} \nResult : {ctx.author} Win """
+                info_message = f"""\nYou played paper \nGemmy played {bot_sps} \nResult : Win, You win 50 gems."""
             elif bot_sps=="paper":
-                info_message = f"""\n{ctx.author} played paper \nGEMMY#3755 played {bot_sps} \nResult : Draw """
+                info_message = f"""\nYou played paper \nGemmy played {bot_sps} \nResult : Draw, No balance change."""
             else:
-                info_message = f"""\n{ctx.author} played paper \nGEMMY#3755 played {bot_sps} \nResult : {ctx.author} Lost """
+                info_message = f"""\nYou played paper \nGemmy played {bot_sps} \nResult : Lose, You lose 50 gems."""
 
         elif reaction.emoji=='\U0000270C':
             if bot_sps=="stone":
-                info_message = f"""\n{ctx.author} played scissor \nGEMMY#3755 played {bot_sps} \nResult : {ctx.author} Lost """
+                info_message = f"""\nYou played scissor \nGemmy played {bot_sps} \nResult : Lose, You lose 50 gems."""
             elif bot_sps=="paper":
-                info_message = f"""\n{ctx.author} played scissor \nGEMMY#3755 played {bot_sps} \nResult : {ctx.author} Win """
+                info_message = f"""\nYou played scissor \nGemmy played {bot_sps} \nResult : Win, You win 50 gems."""
             else:
-                info_message = f"""\n{ctx.author} played scissor \nGEMMY#3755 played {bot_sps} \nResult : Draw """
+                info_message = f"""\nYou played scissor \nGemmy played {bot_sps} \nResult : Draw, No balance change."""
         em = discord.Embed(title = f" STONE | PAPER | SCISSOR ",color =discord.Color.red(),description=info_message)
         message = await ctx.send(embed=em)
 
