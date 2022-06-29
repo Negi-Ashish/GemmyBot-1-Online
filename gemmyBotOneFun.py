@@ -51,7 +51,7 @@ async def earn_gem(userID):
 
 async def SPS(ctx,client):
     try:
-        info_message = "STONE | PAPER | SCISSOR   please select your choice within 10 seconds."
+        info_message = "STONE | PAPER | SCISSOR   \nplease select your choice within 10 seconds."
         em = discord.Embed(title = f" STONE | PAPER | SCISSOR ",color =discord.Color.red(),description=info_message)
         message = await ctx.send(embed=em)
         await message.add_reaction('\U0000270A')
