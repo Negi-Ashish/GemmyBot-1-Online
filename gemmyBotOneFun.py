@@ -59,7 +59,7 @@ async def SPS(ctx,client):
         await message.add_reaction('\U0001F44B')
         await message.add_reaction('\U0000270C')
 
-        print(message.reactions)
+        print(await message.reactions)
         
         reaction, user = await client.wait_for('reaction_add', check=lambda r, u: u.id == ctx.author.id,timeout=10.0)
 
