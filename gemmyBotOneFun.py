@@ -59,7 +59,6 @@ async def SPS(ctx,client):
         await message.add_reaction('\U0001F44B')
         await message.add_reaction('\U0000270C')
 
-        print(await message.reactions)
         
         reaction, user = await client.wait_for('reaction_add', check=lambda r, u: u.id == ctx.author.id,timeout=10.0)
 
@@ -68,11 +67,11 @@ async def SPS(ctx,client):
 
         if reaction.emoji=='\U0000270A':
             if bot_sps=="stone":
-                info_message = f"""\n {reaction} VS \n\{message.reactions[0]} \nResult : Draw """
+                info_message = f"""\nStone VS Stone = Draw """
             elif bot_sps=="paper":
-                info_message = f"""\n {reaction} VS \n{message.reactions[1]} \nResult : {ctx.author} Lost """
+                info_message = f"""\nStone VS Paper = Lost """
             else:
-                info_message = f"""\n  {reaction} VS \n{message.reactions[2]} \nResult : {ctx.author} Win """
+                info_message = f"""\nStone VS Scissor = Win """
 
         elif reaction.emoji=='\U0001F44B':
             if bot_sps=="stone":
