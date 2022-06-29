@@ -50,19 +50,22 @@ async def earn_gem(userID):
 
 
 async def SPS(ctx,client):
-    info_message = "STONE | PAPER | SCISSOR   please select your choice."
-    em = discord.Embed(title = f" STONE | PAPER | SCISSOR ",color =discord.Color.red(),description=info_message)
-    message = await ctx.send(embed=em)
-    await message.add_reaction('\U0000270A')
-    await message.add_reaction('\U0001F44B')
-    await message.add_reaction('\U0000270C')
+    try:
+        info_message = "STONE | PAPER | SCISSOR   please select your choice."
+        em = discord.Embed(title = f" STONE | PAPER | SCISSOR ",color =discord.Color.red(),description=info_message)
+        message = await ctx.send(embed=em)
+        await message.add_reaction('\U0000270A')
+        await message.add_reaction('\U0001F44B')
+        await message.add_reaction('\U0000270C')
 
-    
-    reaction, user = await client.wait_for('reaction_add', check=lambda r, u: u.id == message.author,timeout=10.0)
+        
+        reaction, user = await client.wait_for('reaction_add', check=lambda r, u: u.id == message.author,timeout=10.0)
 
-    print(reaction,user)
+        print(reaction,user)
 
-    # use user and reaction
+        # use user and reaction
+    except:
+        print("There was a Error in SPS")
 
 
 
