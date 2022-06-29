@@ -67,12 +67,28 @@ async def SPS(ctx,client):
 
         if reaction.emoji=='\U0000270A':
             if bot_sps=="stone":
-                info_message = f"""\nPlayer-1 : {ctx.author} played STONE \nPlayer-2 : GEMMY#3755 played {bot_sps} \nResult : Draw """
+                info_message = f"""\nPlayer-1 : {ctx.author} played stone \nPlayer-2 : GEMMY#3755 played {bot_sps} \nResult : Draw """
             elif bot_sps=="paper":
-                info_message = f"""\nPlayer-1 : {ctx.author} played STONE \nPlayer-2 : GEMMY#3755 played {bot_sps} \nResult : Player-1 Lost """
+                info_message = f"""\nPlayer-1 : {ctx.author} played stone \nPlayer-2 : GEMMY#3755 played {bot_sps} \nResult : Player-1 Lost """
             else:
-                info_message = f"""\nPlayer-1 : {ctx.author} played STONE \nPlayer-2 : GEMMY#3755 played {bot_sps} \nResult : Player-1 Win """
+                info_message = f"""\nPlayer-1 : {ctx.author} played stone \nPlayer-2 : GEMMY#3755 played {bot_sps} \nResult : Player-1 Win """
 
+        elif reaction.emoji=='\U0001F44B':
+            if bot_sps=="stone":
+                info_message = f"""\nPlayer-1 : {ctx.author} played paper \nPlayer-2 : GEMMY#3755 played {bot_sps} \nResult : Player-1 Win """
+            elif bot_sps=="paper":
+                info_message = f"""\nPlayer-1 : {ctx.author} played paper \nPlayer-2 : GEMMY#3755 played {bot_sps} \nResult : Draw """
+            else:
+                info_message = f"""\nPlayer-1 : {ctx.author} played paper \nPlayer-2 : GEMMY#3755 played {bot_sps} \nResult : Player-1 Lost """
+
+        elif reaction.emoji=='\U0000270C':
+            if bot_sps=="stone":
+                info_message = f"""\nPlayer-1 : {ctx.author} played scissor \nPlayer-2 : GEMMY#3755 played {bot_sps} \nResult : Player-1 Lost """
+            elif bot_sps=="paper":
+                info_message = f"""\nPlayer-1 : {ctx.author} played scissor \nPlayer-2 : GEMMY#3755 played {bot_sps} \nResult : Player-1 Win """
+            else:
+                info_message = f"""\nPlayer-1 : {ctx.author} played scissor \nPlayer-2 : GEMMY#3755 played {bot_sps} \nResult : Draw """
+        
             em = discord.Embed(title = f" STONE | PAPER | SCISSOR ",color =discord.Color.red(),description=info_message)
             message = await ctx.send(embed=em)
 
