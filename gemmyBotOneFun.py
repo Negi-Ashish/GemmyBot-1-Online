@@ -1,4 +1,5 @@
 from email import message
+from http import client
 from typing import final
 import config.constants as const;
 import requests;
@@ -56,8 +57,8 @@ async def SPS(ctx):
     await message.add_reaction('\U0001F44B')
     await message.add_reaction('\U0000270C')
 
-
-    reaction, user = await ctx.wait_for('reaction_add', check=lambda r, u: u.id == message.author,timeout=15.0)
+    
+    reaction, user = await client.wait_for('reaction_add', check=lambda r, u: u.id == message.author,timeout=10.0)
 
     print(reaction,user)
 

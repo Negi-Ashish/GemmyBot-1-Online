@@ -12,7 +12,6 @@ client = commands.Bot(command_prefix='!gemmy ')
 
 
 
-
 @client.event
 async def on_ready():
     print("Started")
@@ -78,7 +77,7 @@ async def earn(ctx):
 @client.command()
 async def bet(ctx,game_name):
     if game_name=="SPS":
-        await SPS(ctx)
+        await SPS(ctx,client)
 
 
 
