@@ -14,7 +14,8 @@ async def open_account(user):
     else:
         try:
             account_json = {"userId":user.id,"walletBalance":0,"bankBalance":0}
-            requests.post(const.ADD_ACCOUNT, json=account_json)
+            headers = {"GEMMY_ACCESS_TOKEN":const.GEMMY_ACCESS_TOKEN}
+            requests.post(const.ADD_ACCOUNT, json=account_json,headers=headers)
             return True
         except:
             print("There was a Error in adding account")
@@ -43,7 +44,8 @@ async def get_balance(userID):
 async def earn_gem(userID):
     try:
         api_url = f"""{const.ACCOUNT_EARN}?userID={userID}"""
-        response=requests.put(api_url).json()
+        headers = {"GEMMY_ACCESS_TOKEN":const.GEMMY_ACCESS_TOKEN}
+        response=requests.put(api_url,headers=headers).json()
         return response['message']
     except:
         print("There was a Error in earn_gem")
@@ -131,7 +133,8 @@ async def deposit_withdraw_gem(userID,amount,wallet_balance,bank_balance,method)
             print("There was a impossible Error in deposit_withdraw_gem")
             raise Exception
         account_json = {"userId":userID,"walletBalance":wallet_balance,"bankBalance":bank_balance}
-        requests.put(const.UPDATE_BALANCE, json=account_json)
+        headers = {"GEMMY_ACCESS_TOKEN":const.GEMMY_ACCESS_TOKEN}
+        requests.put(const.UPDATE_BALANCE, json=account_json,headers=headers)
         return 
     except:
         print("There was a Error in deposit_withdraw_gem")
