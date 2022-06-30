@@ -158,17 +158,21 @@ async def RTD(ctx,amount,wallet_balance,bank_balance):
         gemmy_result = dice_one+dice_two    
         info_message = " ".join([info_message,f"""\nGemmy played {dice_one} and {dice_two} with a total of {gemmy_result}."""])
         if(player_result<gemmy_result):
-            await deposit_withdraw_gem(ctx.author.id,0,wallet_balance-amount,bank_balance,"SPS")
+            wallet_balance=wallet_balance-amount
+            await deposit_withdraw_gem(ctx.author.id,0,wallet_balance,bank_balance,"SPS")
             info_message = " ".join([info_message,f"""\nResult : Lose, You lose {amount} gems."""])
         elif(player_result>gemmy_result):
             if bonus:
                 amount=amount*2
                 info_message = " ".join([info_message,f"""\nCongrulations!! You are eligible for a gemmy bonus as you rolled numbers that Gemmy likes!"""])
-            await deposit_withdraw_gem(ctx.author.id,0,wallet_balance+amount,bank_balance,"SPS")
+            wallet_balance=wallet_balance+amount
+            await deposit_withdraw_gem(ctx.author.id,0,wallet_balance,bank_balance,"SPS")
             info_message = " ".join([info_message,f"""\nResult : Win, You win {amount} gems."""])
         else:
             info_message = " ".join([info_message,f"""\nResult : Draw, No balance change."""])
         em = discord.Embed(title = f" RTD ",color =discord.Color.red(),description=info_message)
+        em.add_field(name="Wallet Balance",value = wallet_balance)
+        em.add_field(name="Bank Balance",value = bank_balance)
         await ctx.send(embed=em)
         
         # use user and reaction
