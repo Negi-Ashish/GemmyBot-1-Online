@@ -166,7 +166,7 @@ async def fortune(ctx):
             await ctx.send(embed = em)
         else:
             message = await fortune_teller(ctx.author.id,(wallet_amount-50),bank_amount)
-            em = discord.Embed(title = f"Your Fortune",color =discord.Color.red(),description=message)
+            em = discord.Embed(title = f"Your Fortune",color =discord.Color.blue(),description=message)
             await ctx.send(embed = em)
 
     except:
