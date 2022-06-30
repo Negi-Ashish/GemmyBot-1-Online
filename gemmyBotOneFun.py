@@ -14,7 +14,7 @@ async def open_account(user):
     else:
         try:
             account_json = {"userId":user.id,"walletBalance":0,"bankBalance":0}
-            headers = {"GEMMY_ACCESS_TOKEN":const.GEMMY_ACCESS_TOKEN}
+            headers = {"GEMMY_ACCESS_TOKEN":const.GEMMY_ACCESS_TOKEN,"Content-Type": "application/json; charset=utf-8"}
             requests.post(const.ADD_ACCOUNT, json=account_json,headers=headers)
             return True
         except:
@@ -133,7 +133,7 @@ async def deposit_withdraw_gem(userID,amount,wallet_balance,bank_balance,method)
             print("There was a impossible Error in deposit_withdraw_gem")
             raise Exception
         account_json = {"userId":userID,"walletBalance":wallet_balance,"bankBalance":bank_balance}
-        headers = {"GEMMY_ACCESS_TOKEN":const.GEMMY_ACCESS_TOKEN}
+        headers = {"GEMMY_ACCESS_TOKEN":const.GEMMY_ACCESS_TOKEN,"Content-Type": "application/json; charset=utf-8"}
         requests.put(const.UPDATE_BALANCE, json=account_json,headers=headers)
         return 
     except:
