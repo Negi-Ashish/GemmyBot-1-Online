@@ -55,7 +55,7 @@ async def balance(ctx):
         await open_account(ctx.author)
         balance = await get_balance(ctx.author.id)
         wallet_amount,bank_amount = balance['wallet_balance'],balance['bank_balance']
-        em = discord.Embed(title = f"{ctx.author.name}'s balance",color =discord.Color.red())
+        em = discord.Embed(title = f"{ctx.author.name}'s balance",color =discord.Color.blue())
         em.add_field(name="Wallet Balance",value = wallet_amount)
         em.add_field(name="Bank Balance",value = bank_amount)
         await ctx.send(embed = em)
@@ -69,7 +69,7 @@ async def balance(ctx):
 async def earn(ctx):
     await open_account(ctx.author)
     earnings_message = await earn_gem(ctx.author.id)
-    em = discord.Embed(title = f"{ctx.author.name}'s earnings",color =discord.Color.red(),description=earnings_message)
+    em = discord.Embed(title = f"{ctx.author.name}'s earnings",color =discord.Color.green(),description=earnings_message)
     await ctx.send(embed = em)
 
 
