@@ -53,7 +53,7 @@ async def earn_gem(userID):
 async def SPS(ctx,client,amount,wallet_balance,bank_balance):
     try:
         info_message = "\nplease select your choice within 10 seconds."
-        em = discord.Embed(title = f" STONE | PAPER | SCISSOR ",color =discord.Color.red(),description=info_message)
+        em = discord.Embed(title = f" STONE | PAPER | SCISSOR ",color =discord.Color.green(),description=info_message)
         message = await ctx.send(embed=em)
         await message.add_reaction('\U0000270A')
         await message.add_reaction('\U0001F44B')
@@ -107,7 +107,7 @@ async def SPS(ctx,client,amount,wallet_balance,bank_balance):
         
         # use user and reaction
     except:
-        sad_messages=["\nGemmy got sad as you didnt played on time.","\nYou always finish quick but today you had to be slow..?","\n I ain't got all day bro.","\n Gemmy is disappointed as you played with its feeling"]
+        sad_messages=["\nGemmy got sad as you didnt play on time.","\nYou always finish quick but today you had to be slow..?","\n I ain't got all day bro.","\n Gemmy is disappointed as you played with its feeling"]
         info_message = sad_messages[random.randrange(0,3)]
         em = discord.Embed(title = f"Penalty (20 gems)",color =discord.Color.red(),description=info_message)
         await deposit_withdraw_gem(ctx.author.id,0,wallet_balance-20,bank_balance,"SPS")
@@ -142,3 +142,29 @@ async def fortune_teller(userID,wallet_balance,bank_balance):
         return message['message']
     except:
         print("There was a Error in fortune_teller")        
+
+
+async def RTD(ctx,amount,wallet_balance,bank_balance):
+    try:
+        dice_one = random.randrange(1,6)
+        dice_two = random.randrange(1,6)
+        player_result = dice_one+dice_two
+        info_message = f"""You played {dice_one} and {dice_two} with a total of {player_result}."""
+        dice_one = random.randrange(1,6)
+        dice_two = random.randrange(1,6)  
+        gemmy_result = dice_one+dice_two    
+        info_message = " ".join([info_message,f"""\nGemmy played {dice_one} and {dice_two} with a total of {gemmy_result}."""])
+        if(player_result<gemmy_result):
+            info_message = " ".join([info_message,f"""\nLose, You lose {amount} gems."""])
+        elif(player_result>gemmy_result):
+            info_message = " ".join([info_message,f"""\nWin, You win {amount} gems."""])
+        else:
+            info_message = " ".join([info_message,f"""\nDraw, No balance change."""])
+        em = discord.Embed(title = f" STONE | PAPER | SCISSOR ",color =discord.Color.red(),description=info_message)
+        await ctx.send(embed=em)
+        
+        # use user and reaction
+    except:
+        info_message = "There was a Error in RTD game please contact any MOD, You will not loose any gems."
+        em = discord.Embed(title = f"Info",color =discord.Color.red(),description=info_message)
+        message = await ctx.send(embed=em)

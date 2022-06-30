@@ -2,7 +2,7 @@ import discord;
 from discord.ext import commands;
 import config.constants as const;
 import json;
-from gemmyBotOneFun import open_account,get_balance,earn_gem,SPS,check_existance,deposit_withdraw_gem,fortune_teller;
+from gemmyBotOneFun import open_account,get_balance,earn_gem,SPS,check_existance,deposit_withdraw_gem,fortune_teller,RTD;
 
 client = commands.Bot(command_prefix='!gemmy ')
 # os.chdir("X:\GemmyBot-1-Online\economy")
@@ -14,7 +14,7 @@ client = commands.Bot(command_prefix='!gemmy ')
 @client.event
 async def on_ready():
     print("Started")
-    await client.change_presence(status=discord.Status.online,activity=discord.Game("Gemmy Game"))
+    await client.change_presence(status=discord.Status.online,activity=discord.Game("Gemmy Games"))
 
 
 @client.event
@@ -91,6 +91,8 @@ async def bet(ctx,game_name,amount):
             return 
         if game_name=="SPS":
             await SPS(ctx,client,amount,wallet_amount,bank_amount)
+        if game_name=="RTD":
+            await RTD(ctx,amount,wallet_amount,bank_amount)
     except:
         info_message = f"""There is a Error in bet command."""
         em = discord.Embed(title = f"Info",color = discord.Color.red(),description=info_message)
