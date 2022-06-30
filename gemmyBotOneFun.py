@@ -44,7 +44,7 @@ async def get_balance(userID):
 async def earn_gem(userID):
     try:
         api_url = f"""{const.ACCOUNT_EARN}?userID={userID}"""
-        headers = {"GEMMY_ACCESS_TOKEN":const.GEMMY_ACCESS_TOKEN}
+        headers = {"GEMMY_ACCESS_TOKEN": const.GEMMY_ACCESS_TOKEN,"Content-Type": "application/json; charset=utf-8"}
         response=requests.put(api_url,headers=headers).json()
         return response['message']
     except:
