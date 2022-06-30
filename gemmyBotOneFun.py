@@ -146,21 +146,29 @@ async def fortune_teller(userID,wallet_balance,bank_balance):
 
 async def RTD(ctx,amount,wallet_balance,bank_balance):
     try:
+        bonus=False
         dice_one = random.randrange(1,6)
         dice_two = random.randrange(1,6)
         player_result = dice_one+dice_two
+        if(dice_one==dice_two):
+            bonus = True
         info_message = f"""You played {dice_one} and {dice_two} with a total of {player_result}."""
         dice_one = random.randrange(1,6)
         dice_two = random.randrange(1,6)  
         gemmy_result = dice_one+dice_two    
         info_message = " ".join([info_message,f"""\nGemmy played {dice_one} and {dice_two} with a total of {gemmy_result}."""])
         if(player_result<gemmy_result):
-            info_message = " ".join([info_message,f"""\nLose, You lose {amount} gems."""])
+            await deposit_withdraw_gem(ctx.author.id,0,wallet_balance-amount,bank_balance,"SPS")
+            info_message = " ".join([info_message,f"""\nResult : Lose, You lose {amount} gems."""])
         elif(player_result>gemmy_result):
-            info_message = " ".join([info_message,f"""\nWin, You win {amount} gems."""])
+            if bonus:
+                amount=amount*2
+                info_message = " ".join([info_message,f"""\nCongrulations!! You are eligible for a gemmy bonus as you rolled numbers that Gemmy likes!"""])
+            await deposit_withdraw_gem(ctx.author.id,0,wallet_balance+amount,bank_balance,"SPS")
+            info_message = " ".join([info_message,f"""\nResult : Win, You win {amount} gems."""])
         else:
-            info_message = " ".join([info_message,f"""\nDraw, No balance change."""])
-        em = discord.Embed(title = f" STONE | PAPER | SCISSOR ",color =discord.Color.red(),description=info_message)
+            info_message = " ".join([info_message,f"""\nResult : Draw, No balance change."""])
+        em = discord.Embed(title = f" RTD ",color =discord.Color.red(),description=info_message)
         await ctx.send(embed=em)
         
         # use user and reaction
