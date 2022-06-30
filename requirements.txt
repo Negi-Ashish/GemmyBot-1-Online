@@ -1,3 +1,4 @@
 discord.py
 requests==2.27.1
 pycord
+discord.ui
