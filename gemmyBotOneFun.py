@@ -99,10 +99,14 @@ async def SPS(ctx,client,amount,wallet_balance,bank_balance):
         if result=="neutral":
             pass
         elif result=="win":
-            await deposit_withdraw_gem(ctx.author.id,0,wallet_balance+amount,bank_balance,"SPS")
+            wallet_balance=wallet_balance+amount
+            await deposit_withdraw_gem(ctx.author.id,0,wallet_balance,bank_balance,"SPS")
         else:
-            await deposit_withdraw_gem(ctx.author.id,0,wallet_balance-amount,bank_balance,"SPS")
-        em = discord.Embed(title = f" STONE | PAPER | SCISSOR ",color =discord.Color.red(),description=info_message)
+            wallet_balance=wallet_balance-amount
+            await deposit_withdraw_gem(ctx.author.id,0,wallet_balance,bank_balance,"SPS")
+        em = discord.Embed(title = f" STONE | PAPER | SCISSOR ",color =discord.Color.green(),description=info_message)
+        em.add_field(name="Wallet Balance",value = wallet_balance)
+        em.add_field(name="Bank Balance",value = bank_balance)
         message = await ctx.send(embed=em)
         
         # use user and reaction
@@ -170,7 +174,7 @@ async def RTD(ctx,amount,wallet_balance,bank_balance):
             info_message = " ".join([info_message,f"""\nResult : Win, You win {amount} gems."""])
         else:
             info_message = " ".join([info_message,f"""\nResult : Draw, No balance change."""])
-        em = discord.Embed(title = f" RTD ",color =discord.Color.red(),description=info_message)
+        em = discord.Embed(title = f" RTD ",color =discord.Color.green(),description=info_message)
         em.add_field(name="Wallet Balance",value = wallet_balance)
         em.add_field(name="Bank Balance",value = bank_balance)
         await ctx.send(embed=em)
