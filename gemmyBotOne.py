@@ -1,5 +1,7 @@
+from select import select
 import discord;
 from discord.ext import commands;
+from discord.ui import Select,View;
 import config.constants as const;
 import json;
 from gemmyBotOneFun import open_account,get_balance,earn_gem,SPS,check_existance,deposit_withdraw_gem,fortune_teller,RTD;
@@ -173,3 +175,29 @@ async def fortune(ctx):
         info_message = """You currently dont have a account. Type '!gemmy balance' to create a account"""
         em = discord.Embed(title = f"Create your free account today!",color =discord.Color.red(),description=info_message)
         await ctx.send(embed = em)
+
+
+@client.command()
+async def Race(ctx):
+    try:
+        # balance = await get_balance(ctx.author.id)
+        # wallet_amount,bank_amount = balance['wallet_balance'],balance['bank_balance']
+        select = Select(
+            placeholder="Choose your Gemmy!",
+            options=[
+                discord.SelectOption(label="Gemmy#921",emoji=":921:",description="Gemmy#921 is a professional athlete"),
+                discord.SelectOption(label="Gemmy#1456",emoji=":1456:",description="Gemmy#1456 Never Gives Up"),
+                discord.SelectOption(label="Gemmy#1669",emoji=":1669:",description="Gemmy#1669 is smart and fast"),
+                discord.SelectOption(label="Gemmy#2495",emoji=":2495:",description="Gemmy#2495 is a trickster"),
+                discord.SelectOption(label="Gemmy#4634",emoji=":4634:",description="Gemmy#4634 somkes Weed")
+            ]
+        )
+        view = View()
+        view.add_item(select)
+        await ctx.send("Choose Your Gemmy!",view=view)
+
+    except:
+        info_message = """You currently dont have a account. Type '!gemmy balance' to create a account"""
+        em = discord.Embed(title = f"Create your free account today!",color =discord.Color.red(),description=info_message)
+        await ctx.send(embed = em)
+
