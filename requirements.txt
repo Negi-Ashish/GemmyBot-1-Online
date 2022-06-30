@@ -1,3 +1,2 @@
-discord.py
 requests==2.27.1
-py-cord
+discord.py @ git+https://github.com/Rapptz/discord.py
