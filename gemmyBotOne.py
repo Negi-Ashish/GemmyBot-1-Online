@@ -189,7 +189,7 @@ async def Race(ctx):
                 discord.SelectOption(label="Gemmy#1456",emoji=":1456:",description="Gemmy#1456 Never Gives Up"),
                 discord.SelectOption(label="Gemmy#1669",emoji=":1669:",description="Gemmy#1669 is smart and fast"),
                 discord.SelectOption(label="Gemmy#2495",emoji=":2495:",description="Gemmy#2495 is a trickster"),
-                discord.SelectOption(label="Gemmy#4634",emoji=":4634:",description="Gemmy#4634 somkes Weed")
+                discord.SelectOption(label="Gemmy#4634",emoji=":4634:",description="Gemmy#4634 smokes Weed")
             ]
         )
         view = View()
