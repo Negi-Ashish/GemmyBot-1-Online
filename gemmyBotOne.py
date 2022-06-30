@@ -94,8 +94,8 @@ async def bet(ctx,game_name,amount):
         if game_name=="RTD":
             await RTD(ctx,amount,wallet_amount,bank_amount)
     except:
-        info_message = f"""There is a Error in bet command."""
-        em = discord.Embed(title = f"Info",color = discord.Color.red(),description=info_message)
+        info_message = f"""You dont have a account yet. Typle "!gemmy balance" to create one."""
+        em = discord.Embed(title = f"Create your free account today!",color = discord.Color.red(),description=info_message)
         await ctx.send(embed = em)
 
 
@@ -170,6 +170,6 @@ async def fortune(ctx):
             await ctx.send(embed = em)
 
     except:
-        info_message = """We cannot see your fortune"""
-        em = discord.Embed(title = f"Error",color =discord.Color.red(),description=info_message)
+        info_message = """You currently dont have a account. Type '!gemmy balance' to create a account"""
+        em = discord.Embed(title = f"Create your free account today!",color =discord.Color.red(),description=info_message)
         await ctx.send(embed = em)
