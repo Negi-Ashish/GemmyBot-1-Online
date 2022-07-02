@@ -178,25 +178,21 @@ async def fortune(ctx):
 
 @client.command()
 async def Race(ctx):
-    try:
-        # balance = await get_balance(ctx.author.id)
-        # wallet_amount,bank_amount = balance['wallet_balance'],balance['bank_balance']
-        select = Select(
-            placeholder="Choose your Gemmy!",
-            options=[
-                discord.SelectOption(label="Gemmy#921",emoji=":921:",description="Gemmy#921 is a professional athlete"),
-                discord.SelectOption(label="Gemmy#1456",emoji=":1456:",description="Gemmy#1456 Never Gives Up"),
-                discord.SelectOption(label="Gemmy#1669",emoji=":1669:",description="Gemmy#1669 is smart and fast"),
-                discord.SelectOption(label="Gemmy#2495",emoji=":2495:",description="Gemmy#2495 is a trickster"),
-                discord.SelectOption(label="Gemmy#4634",emoji=":4634:",description="Gemmy#4634 smokes Weed")
-            ]
-        )
-        view = View()
-        view.add_item(select)
-        await ctx.send("Choose Your Gemmy!",view=view)
 
-    except:
-        info_message = """You currently dont have a account. Type '!gemmy balance' to create a account"""
-        em = discord.Embed(title = f"Create your free account today!",color =discord.Color.red(),description=info_message)
-        await ctx.send(embed = em)
+    # balance = await get_balance(ctx.author.id)
+    # wallet_amount,bank_amount = balance['wallet_balance'],balance['bank_balance']
+    select = Select(
+        placeholder="Choose your Gemmy!",
+        options=[
+            discord.SelectOption(label="Gemmy#921",emoji=":921:",description="Gemmy#921 is a professional athlete"),
+            discord.SelectOption(label="Gemmy#1456",emoji=":1456:",description="Gemmy#1456 Never Gives Up"),
+            discord.SelectOption(label="Gemmy#1669",emoji=":1669:",description="Gemmy#1669 is smart and fast"),
+            discord.SelectOption(label="Gemmy#2495",emoji=":2495:",description="Gemmy#2495 is a trickster"),
+            discord.SelectOption(label="Gemmy#4634",emoji=":4634:",description="Gemmy#4634 smokes Weed")
+        ]
+    )
+    view = View()
+    view.add_item(select)
+    await ctx.send("Choose Your Gemmy!",view=view)
+
 
