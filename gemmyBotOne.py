@@ -7,10 +7,10 @@ import json;
 from gemmyBotOneFun import open_account,get_balance,earn_gem,SPS,check_existance,deposit_withdraw_gem,fortune_teller,RTD;
 
 # client = commands.Bot(command_prefix='!gemmy ')
-client = commands.Bot(command_prefix='!gemmy',intents=discord.Intents.all())
+client = commands.Bot(intents=discord.Intents.all())
 # os.chdir("X:\GemmyBot-1-Online\economy")
 
-
+client.command_prefix="!gemmy"
 
 @client.event
 async def on_ready():
@@ -18,15 +18,15 @@ async def on_ready():
     await client.change_presence(status=discord.Status.online,activity=discord.Game("Gemmy Games"))
 
 
-# @client.event
-# async def on_message(message):
-#     if message.author==client.user:
-#         if message.content=="Hello! Welcome to GemmyBotClub. We are Glad You came to visit.":
-#             await message.add_reaction('\U0001F917')
-#         return
-#     if message.content.startswith("hello") or message.content.startswith("Hello") or message.content.startswith("Hi") or message.content.startswith("hi"):
-#         await message.channel.send ("Hello! Welcome to GemmyBotClub. We are Glad You came to visit.")
-#     await client.process_commands(message)
+@client.event
+async def on_message(message):
+    if message.author==client.user:
+        if message.content=="Hello! Welcome to GemmyBotClub. We are Glad You came to visit.":
+            await message.add_reaction('\U0001F917')
+        return
+    if message.content.startswith("hello") or message.content.startswith("Hello") or message.content.startswith("Hi") or message.content.startswith("hi"):
+        await message.channel.send ("Hello! Welcome to GemmyBotClub. We are Glad You came to visit.")
+    await client.process_commands(message)
 
 
 # @client.event
