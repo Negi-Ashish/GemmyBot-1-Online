@@ -7,7 +7,7 @@ import discord;
 import random;
 from discord.ext import commands;
 from config.gemmyrace import MySelectRace
-from discord_interactions import interaction;
+
 
 
 async def open_account(user):
