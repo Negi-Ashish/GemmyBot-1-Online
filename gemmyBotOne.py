@@ -46,7 +46,7 @@ async def on_ready():
 
 
 # ==================================================================================================================================#
-@client.command()
+@client.Command()
 async def test(ctx, arg):
     await ctx.send(arg)
 
