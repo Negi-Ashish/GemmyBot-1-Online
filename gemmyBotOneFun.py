@@ -6,7 +6,7 @@ import requests;
 import discord;
 import random;
 from discord.ext import commands;
-from discord.ui import Select,View;
+from config.gemmyrace import MySelectRace
 from discord_interactions import interaction;
 
 
@@ -191,41 +191,6 @@ async def RTD(ctx,amount,wallet_balance,bank_balance):
         message = await ctx.send(embed=em)
 
 
-class MySelectRace(View):
-    @discord.ui.select(placeholder="Choose your Gemmy!",
-            options=[
-                discord.SelectOption(
-                    label="Gemmy#921",
-                    emoji="<:921:992093550772760647>",
-                    description="Gemmy#921 is a swimmer."
-                    ),
-                discord.SelectOption(
-                    label="Gemmy#1456",
-                    emoji="<:1456:992093539360051281>",
-                    description="Gemmy#1456 is a diver"
-                    ),
-                discord.SelectOption(
-                    label="Gemmy#1669",
-                    emoji="<:1669:992093541742415882>",
-                    description="Gemmy#1669 is smart and fast"
-                    ),
-                discord.SelectOption(
-                    label="Gemmy#2495",
-                    emoji="<:2495:992093547069186078>",
-                    description="Gemmy#2495 is a trickster"
-                    ),
-                discord.SelectOption(
-                    label="Gemmy#4634",
-                    emoji="<:4634:992093544238034975>",
-                    description="Gemmy#4634 smokes Weed"
-                    )
-            ])
-    async def race_results(self,select,interaction):
-        select.disabled = True
-        # await interaction.response.edit_message(view=view)
-        # # await interaction.response.followup.send(f"""hihihihi {select.values}""")
-        # await ctx.send(f"You choosed {select.values}")
-        
 
 
 
@@ -234,8 +199,6 @@ async def RACE(ctx,amount,wallet_balance,bank_balance):
         view = MySelectRace()
         await ctx.send("Choose Your Gemmy!",view=view)
         return 
-
-
 
     except Exception as e:
         print(e)
