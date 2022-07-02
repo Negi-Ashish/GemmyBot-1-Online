@@ -6,7 +6,8 @@ import config.constants as const;
 import json;
 from gemmyBotOneFun import open_account,get_balance,earn_gem,SPS,check_existance,deposit_withdraw_gem,fortune_teller,RTD;
 
-client = commands.Bot(command_prefix='!gemmy ')
+# client = commands.Bot(command_prefix='!gemmy ')
+client = commands.Bot(intents=discord.Intents.default(),command_prefix='!gemmy')
 # os.chdir("X:\GemmyBot-1-Online\economy")
 
 
