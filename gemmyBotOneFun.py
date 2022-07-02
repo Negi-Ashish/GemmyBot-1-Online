@@ -7,6 +7,8 @@ import discord;
 import random;
 from discord.ext import commands;
 from discord.ui import Select,View;
+from discord_interactions import interaction;
+
 
 async def open_account(user):
     existance = await check_existance(user.id)
@@ -202,9 +204,18 @@ async def RACE(ctx,amount,wallet_balance,bank_balance):
                 discord.SelectOption(label="Gemmy#4634",emoji="<:4634:992093544238034975>",description="Gemmy#4634 smokes Weed")
             ]
         )
+
+        async def race_results(interaction):
+            await interaction.response.send_message(f"""hihihihi {select.values}""")
+
+        select.callback = race_results
+
         view = View()
         view.add_item(select)
         await ctx.send("Choose Your Gemmy!",view=view)
+
+
+
 
     except Exception as e:
         print(e)
