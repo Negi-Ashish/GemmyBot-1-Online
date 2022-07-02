@@ -1,8 +1,9 @@
 from discord.ext import commands;
 import config.constants as const;
 import requests
+import discord
 
-client2 = commands.Bot(command_prefix='*')
+client2 = commands.Bot(intents=discord.Intents.default(),command_prefix='*')
 
 
 @client2.command()
