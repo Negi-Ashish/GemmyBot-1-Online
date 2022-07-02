@@ -187,10 +187,10 @@ async def Race(ctx):
             placeholder="Choose your Gemmy!",
             options=[
                 discord.SelectOption(label="Gemmy#921",emoji="<:921:992093550772760647>",description="Gemmy#921 is a professional athlete"),
-                discord.SelectOption(label="Gemmy#1456",emoji="<:921:992093550772760647>",description="Gemmy#1456 Never Gives Up"),
-                discord.SelectOption(label="Gemmy#1669",emoji="<:921:992093550772760647>",description="Gemmy#1669 is smart and fast"),
-                discord.SelectOption(label="Gemmy#2495",emoji="<:921:992093550772760647>",description="Gemmy#2495 is a trickster"),
-                discord.SelectOption(label="Gemmy#4634",emoji="<:921:992093550772760647>",description="Gemmy#4634 smokes Weed")
+                discord.SelectOption(label="Gemmy#1456",emoji="<:1456:992093539360051281>",description="Gemmy#1456 Never Gives Up"),
+                discord.SelectOption(label="Gemmy#1669",emoji="<:1669:992093541742415882>",description="Gemmy#1669 is smart and fast"),
+                discord.SelectOption(label="Gemmy#2495",emoji="<:2495:992093547069186078>",description="Gemmy#2495 is a trickster"),
+                discord.SelectOption(label="Gemmy#4634",emoji="<:4634:992093544238034975>",description="Gemmy#4634 smokes Weed")
             ]
         )
         view = View()
