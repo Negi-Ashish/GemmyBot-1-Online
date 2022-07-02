@@ -207,7 +207,7 @@ async def RACE(ctx,amount,wallet_balance,bank_balance):
 
         async def race_results(interaction):
             select.disabled = True
-            await interaction.response.edit_message()
+            await interaction.response.edit_message(view=view)
             await interaction.response.followup.send(f"""hihihihi {select.values}""")
             
 
