@@ -6,6 +6,7 @@ import requests;
 import discord;
 import random;
 from discord.ext import commands;
+from discord.ui import Select,View;
 
 async def open_account(user):
     existance = await check_existance(user.id)
@@ -186,3 +187,27 @@ async def RTD(ctx,amount,wallet_balance,bank_balance):
         info_message = "There was a Error in RTD game please contact any MOD, You will not loose any gems."
         em = discord.Embed(title = f"Info",color =discord.Color.red(),description=info_message)
         message = await ctx.send(embed=em)
+
+async def RACE(ctx,amount,wallet_balance,bank_balance):
+    try:
+        # balance = await get_balance(ctx.author.id)
+        # wallet_amount,bank_amount = balance['wallet_balance'],balance['bank_balance']
+        select = Select(
+            placeholder="Choose your Gemmy!",
+            options=[
+                discord.SelectOption(label="Gemmy#921",emoji="<:921:992093550772760647>",description="Gemmy#921 is a professional athlete"),
+                discord.SelectOption(label="Gemmy#1456",emoji="<:1456:992093539360051281>",description="Gemmy#1456 Never Gives Up"),
+                discord.SelectOption(label="Gemmy#1669",emoji="<:1669:992093541742415882>",description="Gemmy#1669 is smart and fast"),
+                discord.SelectOption(label="Gemmy#2495",emoji="<:2495:992093547069186078>",description="Gemmy#2495 is a trickster"),
+                discord.SelectOption(label="Gemmy#4634",emoji="<:4634:992093544238034975>",description="Gemmy#4634 smokes Weed")
+            ]
+        )
+        view = View()
+        view.add_item(select)
+        await ctx.send("Choose Your Gemmy!",view=view)
+
+    except Exception as e:
+        print(e)
+        info_message = """You currently dont have a account. Type '!gemmy balance' to create a account"""
+        em = discord.Embed(title = f"Create your free account today!",color =discord.Color.red(),description=info_message)
+        await ctx.send(embed = em)

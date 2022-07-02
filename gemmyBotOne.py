@@ -1,12 +1,12 @@
 from select import select
 import discord;
 from discord.ext import commands;
-from discord.ui import Select,View;
+
 import config.constants as const;
 import json;
 
 
-from gemmyBotOneFun import open_account,get_balance,earn_gem,SPS,check_existance,deposit_withdraw_gem,fortune_teller,RTD;
+from gemmyBotOneFun import open_account,get_balance,earn_gem,SPS,check_existance,deposit_withdraw_gem,fortune_teller,RTD,RACE;
 
 # client = commands.Bot(command_prefix='!gemmy ')
 client = commands.Bot(command_prefix='!gemmy ',intents=discord.Intents.all())
@@ -79,6 +79,7 @@ async def earn(ctx):
 @client.command()
 async def bet(ctx,game_name,amount):
     try:
+        game_name=game_name.lower()
         balance = await get_balance(ctx.author.id)
         wallet_amount,bank_amount = balance['wallet_balance'],balance['bank_balance']
         amount = int(amount)
@@ -92,10 +93,13 @@ async def bet(ctx,game_name,amount):
             em = discord.Embed(title = f" STONE | PAPER | SCISSOR ",color = discord.Color.red(),description=info_message)
             await ctx.send(embed = em)
             return 
-        if game_name=="SPS":
+        if game_name=="sps":
             await SPS(ctx,client,amount,wallet_amount,bank_amount)
-        if game_name=="RTD":
+        elif game_name=="rtd":
             await RTD(ctx,amount,wallet_amount,bank_amount)
+        elif game_name=="race":
+            await RACE(ctx,amount,wallet_amount,bank_amount)
+
     except:
         info_message = f"""You dont have a account yet. Typle "!gemmy balance" to create one."""
         em = discord.Embed(title = f"Create your free account today!",color = discord.Color.red(),description=info_message)
@@ -177,29 +181,4 @@ async def fortune(ctx):
         em = discord.Embed(title = f"Create your free account today!",color =discord.Color.red(),description=info_message)
         await ctx.send(embed = em)
 
-
-@client.command()
-async def Race(ctx):
-    try:
-        # balance = await get_balance(ctx.author.id)
-        # wallet_amount,bank_amount = balance['wallet_balance'],balance['bank_balance']
-        select = Select(
-            placeholder="Choose your Gemmy!",
-            options=[
-                discord.SelectOption(label="Gemmy#921",emoji="<:921:992093550772760647>",description="Gemmy#921 is a professional athlete"),
-                discord.SelectOption(label="Gemmy#1456",emoji="<:1456:992093539360051281>",description="Gemmy#1456 Never Gives Up"),
-                discord.SelectOption(label="Gemmy#1669",emoji="<:1669:992093541742415882>",description="Gemmy#1669 is smart and fast"),
-                discord.SelectOption(label="Gemmy#2495",emoji="<:2495:992093547069186078>",description="Gemmy#2495 is a trickster"),
-                discord.SelectOption(label="Gemmy#4634",emoji="<:4634:992093544238034975>",description="Gemmy#4634 smokes Weed")
-            ]
-        )
-        view = View()
-        view.add_item(select)
-        await ctx.send("Choose Your Gemmy!",view=view)
-
-    except Exception as e:
-        print(e)
-        info_message = """You currently dont have a account. Type '!gemmy balance' to create a account"""
-        em = discord.Embed(title = f"Create your free account today!",color =discord.Color.red(),description=info_message)
-        await ctx.send(embed = em)
 
