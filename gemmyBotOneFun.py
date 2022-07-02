@@ -209,7 +209,7 @@ async def RACE(ctx,amount,wallet_balance,bank_balance):
             select.disabled = True
             await interaction.response.edit_message(view=view)
             # await interaction.response.followup.send(f"""hihihihi {select.values}""")
-            await ctx.send("You choosed",select.values)
+            await ctx.send(f"You choosed {select.values}")
             
 
         select.callback = race_results
