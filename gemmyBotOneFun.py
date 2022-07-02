@@ -205,16 +205,17 @@ async def RACE(ctx,amount,wallet_balance,bank_balance):
             ]
         )
 
-        async def race_results(interaction):
+        async def race_results(ctx,interaction):
             select.disabled = True
             await interaction.response.edit_message(view=view)
-            await interaction.response.followup.send(f"""hihihihi {select.values}""")
+            # await interaction.response.followup.send(f"""hihihihi {select.values}""")
+            await ctx.send("You choosed",select.values)
             
 
         select.callback = race_results
 
         view = View()
-        view.add_item(select)
+        view.add_item(ctx,select)
         await ctx.send("Choose Your Gemmy!",view=view)
         return 
 
