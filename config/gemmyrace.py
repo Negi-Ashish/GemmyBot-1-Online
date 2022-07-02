@@ -31,7 +31,7 @@ class MySelectRace(View):
                     description="Gemmy#4634 smokes Weed"
                     )
             ])
-    async def race_results(self,select,interaction):
+    async def select_callback(self,select,interaction):
         select.disabled = True
         await interaction.response.edit_message(view=self)
         # await interaction.response.followup.send(f"""hihihihi {select.values}""")
