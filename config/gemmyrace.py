@@ -33,7 +33,7 @@ class MySelectRace(View):
                     )
             ],
             )
-    async def select_callback(self,interaction,select):
+    async def normal_fun(self,interaction,select):
         try:
             # print("ctx_user",self.author)
             print("user",interaction.user)
