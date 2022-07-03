@@ -196,11 +196,11 @@ async def RTD(ctx,amount,wallet_balance,bank_balance):
 
 async def RACE(ctx,amount,wallet_balance,bank_balance):
     try:
-        our_view = MySelectRace()
+        our_view = MySelectRace(ctx)
         await ctx.send("Choose Your Gemmy!",view=our_view)
-        a = await our_view.normal_fun()
-        print("view",our_view)
-        print("a",a)
+        # a = await our_view.normal_fun()
+        # print("view",our_view)
+        # print("a",a)
         return 
 
     except Exception as e:
