@@ -85,12 +85,12 @@ async def bet(ctx,game_name,amount):
         amount = int(amount)
         if(amount<20):
             info_message = f"""Your bet amount cannot be smaller than 20"""
-            em = discord.Embed(title = f" STONE | PAPER | SCISSOR ",color = discord.Color.red(),description=info_message)
+            em = discord.Embed(title = f"Info",color = discord.Color.red(),description=info_message)
             await ctx.send(embed = em)
             return 
         if(amount>wallet_amount):
-            info_message = f"""Your bet amount cannot be greater than {wallet_amount}"""
-            em = discord.Embed(title = f" STONE | PAPER | SCISSOR ",color = discord.Color.red(),description=info_message)
+            info_message = f"""Your bet amount cannot be greater than your wallet balance ({wallet_amount})"""
+            em = discord.Embed(title = f"Info",color = discord.Color.red(),description=info_message)
             await ctx.send(embed = em)
             return 
         if game_name=="sps":
