@@ -2,8 +2,8 @@ from discord.ui import Select,View;
 import discord;
 
 class MySelectRace(View):
-    def __init__(self,author):
-        self.author = author
+    # def __init__(self,author):
+    #     self.author = author
     @discord.ui.select(placeholder="Choose your Gemmy!",
             options=[
                 discord.SelectOption(
@@ -37,6 +37,7 @@ class MySelectRace(View):
         try:
             # print("ctx_user",self.author)
             print("user",interaction.user)
+            print(select)
             select.disabled = True
             await interaction.response.edit_message(view=self)
             # await interaction.response.followup.send(f"""hihihihi {select.values}""")
