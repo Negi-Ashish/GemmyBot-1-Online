@@ -37,7 +37,6 @@ class MySelectRace(View):
         try:
             # print("ctx_user",self.author)
             print("user",interaction.user)
-            print(select)
             select.disabled = True
             await interaction.response.edit_message(view=self)
             # await interaction.response.followup.send(f"""hihihihi {select.values}""")
@@ -49,7 +48,4 @@ class MySelectRace(View):
             return interaction
         except Exception as e:
             print("error in calll back",e)
-            print(interaction.response)
-            print(type(interaction))
-       
         
