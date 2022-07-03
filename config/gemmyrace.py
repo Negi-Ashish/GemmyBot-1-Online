@@ -32,10 +32,11 @@ class MySelectRace(View,):
             ])
     async def select_callback(self,interaction,select):
         try:
-            await interaction.response.send_mesage(f"You choosed {select.values}")
+
             select.disabled = True
             await interaction.response.edit_message(view=self)
             # await interaction.response.followup.send(f"""hihihihi {select.values}""")
+            await interaction.response.send_mesage(f"You choosed {select.values}")
         except Exception as e:
             print("error in calll back",e)
             print(type(interaction))
