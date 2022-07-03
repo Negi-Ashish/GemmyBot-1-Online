@@ -38,10 +38,11 @@ class MySelectRace(View):
         try:
             print("ctx_user",self.author)
             print("user",interaction.user)
-            select.disabled = True
-            await interaction.response.edit_message(view=self)
+            
 
             if(self.author==interaction.user):
+                select.disabled = True
+                await interaction.response.edit_message(view=self)
                 await interaction.followup.send(f"You choosed {select.values}",ephemeral=True)
             else:
                 await interaction.followup.send(f"Sorry You are not playing this game type '!gemmy bet race amount' to play",ephemeral=True)
