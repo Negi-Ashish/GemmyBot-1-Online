@@ -40,12 +40,16 @@ class MySelectRace(View):
             print("user",interaction.user)
             select.disabled = True
             await interaction.response.edit_message(view=self)
+
+            if(self.author==interaction.user):
+                await interaction.followup.send(f"You choosed {select.values}",ephemeral=True)
+            else:
+                await interaction.followup.send(f"Sorry You are not playing this game type '!gemmy bet race amount' to play",ephemeral=True)
             # await interaction.response.followup.send(f"""hihihihi {select.values}""")
             # await interaction.response.FollowupMessage(f"You choosed {select.values}")
             # info_message = f"""this is a test message {select.values}"""
             # em = discord.Embed(title = f"Test",color =discord.Color.green(),description=info_message)
 
-            await interaction.followup.send(f"You choosed {select.values}",ephemeral=True)
             return interaction
         except Exception as e:
             print("error in calll back",e)
