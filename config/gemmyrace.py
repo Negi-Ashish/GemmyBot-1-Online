@@ -45,11 +45,12 @@ class MySelectRace(View):
                 await interaction.response.edit_message(view=self)
                 await interaction.followup.send(f"You choosed {select.values}",ephemeral=True)
             else:
-                await interaction.response.send_message(f"Sorry You are not playing this game type '!gemmy bet race amount' to play",ephemeral=True)
+                info_message = f"""Sorry You are not playing this game type '!gemmy bet race amount' to play"""
+                em = discord.Embed(title = f"Info",color =discord.Color.red(),description=info_message)
+                await interaction.response.send_message(embed=em,ephemeral=True)
             # await interaction.response.followup.send(f"""hihihihi {select.values}""")
             # await interaction.response.FollowupMessage(f"You choosed {select.values}")
-            # info_message = f"""this is a test message {select.values}"""
-            # em = discord.Embed(title = f"Test",color =discord.Color.green(),description=info_message)
+
 
             return interaction
         except Exception as e:
