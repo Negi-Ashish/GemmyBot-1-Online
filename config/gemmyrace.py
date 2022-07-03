@@ -36,7 +36,7 @@ class MySelectRace(View):
             )
     async def normal_fun(self,interaction,select):
         try:
-            # print("ctx_user",self.author)
+            print("ctx_user",self.author)
             print("user",interaction.user)
             select.disabled = True
             await interaction.response.edit_message(view=self)
