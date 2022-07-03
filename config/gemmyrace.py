@@ -36,14 +36,12 @@ class MySelectRace(View):
             )
     async def normal_fun(self,interaction,select):
         try:
-            print("ctx_user",self.author)
-            print("user",interaction.user)
-            
-
             if(self.author==interaction.user):
                 select.disabled = True
                 await interaction.response.edit_message(view=self)
-                await interaction.followup.send(f"You choosed {select.values}",ephemeral=True)
+                info_message = f"""You have selected {select.values[0]}"""
+                em = discord.Embed(title = f"Gemmy Race",color =discord.Color.green(),description=info_message)
+                await interaction.followup.send(embed=em)
             else:
                 info_message = f"""Sorry You are not playing this game type '!gemmy bet race amount' to play"""
                 em = discord.Embed(title = f"Info",color =discord.Color.red(),description=info_message)
