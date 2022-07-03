@@ -1,7 +1,7 @@
 from discord.ui import Select,View;
 import discord;
 import random;
-import constants as const;
+import config.constants as const;
 import requests;
 
 
