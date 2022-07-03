@@ -3,7 +3,7 @@ import discord;
 
 class MySelectRace(View):
     def __init__(self,author):
-        super()
+        View.__init__(self)
         self.author = author
     @discord.ui.select(placeholder="Choose your Gemmy!",
             options=[
