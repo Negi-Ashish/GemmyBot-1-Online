@@ -1,6 +1,9 @@
 from discord.ui import Select,View;
 import discord;
 import random;
+import constants as const;
+import requests;
+
 
 class MySelectRace(View):
     def __init__(self,ctx,amount,wallet_balance,bank_balance,client):
@@ -51,9 +54,19 @@ class MySelectRace(View):
                 if select.values[0]!=gemmy_list[winner_gemmy]:
                     info_message = " ".join([info_message,f"""\nResult : Lose, You lose {self.amount} gems."""])
                     info_message = " ".join([info_message,f"""\nWinning a race will grant you five times the gems you bet."""])
+                    self.wallet_balance = self.wallet_balance-self.amount
                 else:
                     info_message = " ".join([info_message,f"""\nResult : Win, Congrulations!! You won {self.amount * 5} gems."""])
+                    self.wallet_balance = self.wallet_balance+(self.amount * 5)
+                if(self.wallet_balance<0 or self.bank_balance<0):
+                    print("There was a impossible Error in deposit_withdraw_gem")
+                    raise Exception
+                account_json = {"userId":self.ctx.author.id,"walletBalance":self.wallet_balance,"bankBalance":self.bank_balance}
+                headers = {"GEMMY_ACCESS_TOKEN":const.GEMMY_ACCESS_TOKEN,"Content-Type": "application/json; charset=utf-8"}
+                requests.put(const.UPDATE_BALANCE, json=account_json,headers=headers)
                 em = discord.Embed(title = f"Gemmy Race",color =discord.Color.green(),description=info_message)
+                em.add_field(name="Wallet Balance",value = self.wallet_balance)
+                em.add_field(name="Bank Balance",value = self.bank_balance)
                 await interaction.followup.send(embed=em)
             else:
                 info_message = f"""Sorry You are not playing this game type '!gemmy bet race amount' to play"""

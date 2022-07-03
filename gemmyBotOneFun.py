@@ -54,6 +54,25 @@ async def earn_gem(userID):
         print("There was a Error in earn_gem")
 
 
+async def deposit_withdraw_gem(userID,amount,wallet_balance,bank_balance,method):
+    try:
+        if method=="deposit":
+            bank_balance=bank_balance+amount
+            wallet_balance=wallet_balance-amount
+        elif method=="withdraw":
+            bank_balance=bank_balance-amount
+            wallet_balance=wallet_balance+amount
+        if(wallet_balance<0 or bank_balance<0):
+            print("There was a impossible Error in deposit_withdraw_gem")
+            raise Exception
+        account_json = {"userId":userID,"walletBalance":wallet_balance,"bankBalance":bank_balance}
+        headers = {"GEMMY_ACCESS_TOKEN":const.GEMMY_ACCESS_TOKEN,"Content-Type": "application/json; charset=utf-8"}
+        requests.put(const.UPDATE_BALANCE, json=account_json,headers=headers)
+        return 
+    except:
+        print("There was a Error in deposit_withdraw_gem")
+
+
 
 async def SPS(ctx,client,amount,wallet_balance,bank_balance):
     try:
@@ -124,24 +143,6 @@ async def SPS(ctx,client,amount,wallet_balance,bank_balance):
 
 
 
-async def deposit_withdraw_gem(userID,amount,wallet_balance,bank_balance,method):
-    try:
-        if method=="deposit":
-            bank_balance=bank_balance+amount
-            wallet_balance=wallet_balance-amount
-        elif method=="withdraw":
-            bank_balance=bank_balance-amount
-            wallet_balance=wallet_balance+amount
-        if(wallet_balance<0 or bank_balance<0):
-            print("There was a impossible Error in deposit_withdraw_gem")
-            raise Exception
-        account_json = {"userId":userID,"walletBalance":wallet_balance,"bankBalance":bank_balance}
-        headers = {"GEMMY_ACCESS_TOKEN":const.GEMMY_ACCESS_TOKEN,"Content-Type": "application/json; charset=utf-8"}
-        requests.put(const.UPDATE_BALANCE, json=account_json,headers=headers)
-        return 
-    except:
-        print("There was a Error in deposit_withdraw_gem")
-
 
 
 async def fortune_teller(userID,wallet_balance,bank_balance):
@@ -196,6 +197,11 @@ async def RTD(ctx,amount,wallet_balance,bank_balance):
 
 async def RACE(ctx,client,amount,wallet_balance,bank_balance):
     try:
+        if(amount>200):
+            info_message = """Youcannot bet more than 200 gems on a race """
+            em = discord.Embed(title = f"Info",color =discord.Color.red(),description=info_message)
+            await ctx.send(embed = em)
+            return
         our_view = MySelectRace(ctx,amount,wallet_balance,bank_balance,client)
         await ctx.send("Choose Your Gemmy!",view=our_view)
         return 
