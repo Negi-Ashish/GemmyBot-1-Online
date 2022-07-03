@@ -36,7 +36,7 @@ class MySelectRace(View,):
             print("command",interaction.command)
             print("client",interaction.client)
             print("data",interaction.data)
-            print("message",interaction.message)
+            print("user",interaction.user)
             select.disabled = True
             await interaction.response.edit_message(view=self)
             # await interaction.response.followup.send(f"""hihihihi {select.values}""")
