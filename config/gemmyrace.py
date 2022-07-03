@@ -1,7 +1,10 @@
+import sys
+sys.path.append("..")
+
 from discord.ui import Select,View;
 import discord;
 import random;
-from ..gemmyBotOneFun import deposit_withdraw_gem;
+from gemmyBotOneFun import deposit_withdraw_gem;
 
 class MySelectRace(View):
     def __init__(self,ctx,amount,wallet_balance,bank_balance,client):
