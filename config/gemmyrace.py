@@ -2,7 +2,7 @@ from discord.ui import Select,View;
 import discord;
 
 class MySelectRace(View):
-    ctx = None
+
     def __init__(self,ctx):
         self.ctx = ctx
 
