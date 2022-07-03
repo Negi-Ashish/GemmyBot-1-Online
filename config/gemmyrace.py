@@ -45,7 +45,7 @@ class MySelectRace(View):
                 await interaction.response.edit_message(view=self)
                 await interaction.followup.send(f"You choosed {select.values}",ephemeral=True)
             else:
-                await interaction.send_message(f"Sorry You are not playing this game type '!gemmy bet race amount' to play",ephemeral=True)
+                await interaction.response.send_message(f"Sorry You are not playing this game type '!gemmy bet race amount' to play",ephemeral=True)
             # await interaction.response.followup.send(f"""hihihihi {select.values}""")
             # await interaction.response.FollowupMessage(f"You choosed {select.values}")
             # info_message = f"""this is a test message {select.values}"""
