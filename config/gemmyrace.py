@@ -1,5 +1,7 @@
 from discord.ui import Select,View;
 import discord;
+import random;
+
 
 class MySelectRace(View):
     def __init__(self,author):
@@ -40,6 +42,13 @@ class MySelectRace(View):
                 select.disabled = True
                 await interaction.response.edit_message(view=self)
                 info_message = f"""You have selected {select.values[0]}"""
+                gemmy_list = ["Gemmy#921","Gemmy#1456","Gemmy#4634","Gemmy#1669","Gemmy#2495"]
+                winner_gemmy = random.randrange(0,4)
+                info_message = " ".join([info_message,f"""\nAnd {gemmy_list[winner_gemmy]} has won the race."""])
+                if select.values[0]!=gemmy_list[winner_gemmy]:
+                    info_message = " ".join([info_message,f"""\nResult : Lose, You lose amount gems."""])
+                else:
+                    info_message = " ".join([info_message,f"""\nResult : Lose, You won amount gems."""])
                 em = discord.Embed(title = f"Gemmy Race",color =discord.Color.green(),description=info_message)
                 await interaction.followup.send(embed=em)
             else:
