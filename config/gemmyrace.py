@@ -2,6 +2,8 @@ from discord.ui import Select,View;
 import discord;
 
 class MySelectRace(View):
+    def __init__(self,author):
+        self.author = author
     @discord.ui.select(placeholder="Choose your Gemmy!",
             options=[
                 discord.SelectOption(
