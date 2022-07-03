@@ -1,7 +1,11 @@
 from discord.ui import Select,View;
 import discord;
 
-class MySelectRace(View,):
+class MySelectRace(View):
+    ctx = None
+    def __init__(self,ctx):
+        self.ctx = ctx
+
     @discord.ui.select(placeholder="Choose your Gemmy!",
             options=[
                 discord.SelectOption(
@@ -33,9 +37,7 @@ class MySelectRace(View,):
             )
     async def select_callback(self,interaction,select):
         try:
-            print("command",interaction.command)
-            print("client",interaction.client)
-            print("data",interaction.data)
+            print("ctx_user",self.ctx.author)
             print("user",interaction.user)
             select.disabled = True
             await interaction.response.edit_message(view=self)
