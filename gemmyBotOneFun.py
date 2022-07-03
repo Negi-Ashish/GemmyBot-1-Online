@@ -196,7 +196,7 @@ async def RTD(ctx,amount,wallet_balance,bank_balance):
 
 async def RACE(ctx,amount,wallet_balance,bank_balance):
     try:
-        view = MySelectRace(ctx=ctx)
+        view = MySelectRace(ctx.author)
         await ctx.send("Choose Your Gemmy!",view=view)
 
         return 
