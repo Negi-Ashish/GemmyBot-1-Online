@@ -46,6 +46,7 @@ class MySelectRace(View):
             # em = discord.Embed(title = f"Test",color =discord.Color.green(),description=info_message)
 
             await interaction.followup.send(f"You choosed {select.values}",ephemeral=True)
+            return interaction
         except Exception as e:
             print("error in calll back",e)
             print(interaction.response)

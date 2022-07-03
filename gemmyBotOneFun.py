@@ -198,7 +198,7 @@ async def RACE(ctx,amount,wallet_balance,bank_balance):
     try:
         view = MySelectRace()
         await ctx.send("Choose Your Gemmy!",view=view)
-
+        print("view",view)
         return 
 
     except Exception as e:
