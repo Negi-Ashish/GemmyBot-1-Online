@@ -29,7 +29,8 @@ class MySelectRace(View,):
                     emoji="<:4634:992093544238034975>",
                     description="Gemmy#4634 smokes Weed"
                     )
-            ])
+            ],
+            ephemeral=True)
     async def select_callback(self,interaction,select):
         try:
             print("command",interaction.command)
