@@ -1,12 +1,16 @@
 from discord.ui import Select,View;
 import discord;
 import random;
-
+from gemmyBotOneFun import deposit_withdraw_gem;
 
 class MySelectRace(View):
-    def __init__(self,author):
+    def __init__(self,ctx,amount,wallet_balance,bank_balance,client):
         View.__init__(self)
-        self.author = author
+        self.ctx = ctx
+        self.amount = amount
+        self.wallet_balance = wallet_balance
+        self.bank_balance = bank_balance
+        self.client = client
     @discord.ui.select(placeholder="Choose your Gemmy!",
             options=[
                 discord.SelectOption(
@@ -36,9 +40,9 @@ class MySelectRace(View):
                     )
             ],
             )
-    async def normal_fun(self,interaction,select):
+    async def callback(self,interaction,select):
         try:
-            if(self.author==interaction.user):
+            if(self.ctx.author==interaction.user):
                 select.disabled = True
                 await interaction.response.edit_message(view=self)
                 info_message = f"""You have selected {select.values[0]}"""
@@ -46,9 +50,10 @@ class MySelectRace(View):
                 winner_gemmy = random.randrange(0,4)
                 info_message = " ".join([info_message,f"""\nAnd {gemmy_list[winner_gemmy]} has won the race."""])
                 if select.values[0]!=gemmy_list[winner_gemmy]:
-                    info_message = " ".join([info_message,f"""\nResult : Lose, You lose amount gems."""])
+                    info_message = " ".join([info_message,f"""\nResult : Lose, You lose {self.amount} gems."""])
+                    info_message = " ".join([info_message,f"""\nWinning a race will grant you five times the gems you bet."""])
                 else:
-                    info_message = " ".join([info_message,f"""\nResult : Lose, You won amount gems."""])
+                    info_message = " ".join([info_message,f"""\nResult : Win, Congrulations!! You won {self.amount * 5} gems."""])
                 em = discord.Embed(title = f"Gemmy Race",color =discord.Color.green(),description=info_message)
                 await interaction.followup.send(embed=em)
             else:

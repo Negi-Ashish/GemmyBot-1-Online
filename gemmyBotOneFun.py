@@ -57,14 +57,14 @@ async def earn_gem(userID):
 
 async def SPS(ctx,client,amount,wallet_balance,bank_balance):
     try:
-        info_message = "\nplease select your choice within 10 seconds."
+        info_message = "\nplease select your choice within 20 seconds."
         em = discord.Embed(title = f" STONE | PAPER | SCISSOR ",color =discord.Color.green(),description=info_message)
         message = await ctx.send(embed=em)
         await message.add_reaction('\U0000270A')
         await message.add_reaction('\U0001F44B')
         await message.add_reaction('\U0000270C')
 
-        reaction, user = await client.wait_for('reaction_add', check=lambda r, u: u.id == ctx.author.id,timeout=10.0)
+        reaction, user = await client.wait_for('reaction_add', check=lambda r, u: u.id == ctx.author.id,timeout=20.0)
 
         sps = {0:"stone",1:"paper",2:"scissor"}
         bot_sps = sps[random.randrange(0,2)]
@@ -194,13 +194,10 @@ async def RTD(ctx,amount,wallet_balance,bank_balance):
 
 
 
-async def RACE(ctx,amount,wallet_balance,bank_balance):
+async def RACE(ctx,client,amount,wallet_balance,bank_balance):
     try:
-        our_view = MySelectRace(ctx.author)
+        our_view = MySelectRace(ctx,amount,wallet_balance,bank_balance,client)
         await ctx.send("Choose Your Gemmy!",view=our_view)
-        # a = await our_view.normal_fun()
-        # print("view",our_view)
-        # print("a",a)
         return 
 
     except Exception as e:
