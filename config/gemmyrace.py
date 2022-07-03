@@ -37,9 +37,9 @@ class MySelectRace(View,):
             await interaction.response.edit_message(view=self)
             # await interaction.response.followup.send(f"""hihihihi {select.values}""")
             # await interaction.response.FollowupMessage(f"You choosed {select.values}")
-            info_message = f"""this is a test message {select.values}"""
-            em = discord.Embed(title = f"Test",color =discord.Color.green(),description=info_message)
-            await interaction.response.send_message(embed=em)
+            # info_message = f"""this is a test message {select.values}"""
+            # em = discord.Embed(title = f"Test",color =discord.Color.green(),description=info_message)
+            await interaction.followup.send(f"You choosed {select.values}")
         except Exception as e:
             print("error in calll back",e)
             print(interaction.response)
