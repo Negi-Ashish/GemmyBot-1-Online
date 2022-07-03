@@ -1,6 +1,5 @@
 from discord.ui import Select,View;
 import discord;
-from discord_interactions import interaction;
 
 class MySelectRace(View,):
     @discord.ui.select(placeholder="Choose your Gemmy!",
