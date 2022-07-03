@@ -30,7 +30,7 @@ class MySelectRace(View,):
                     description="Gemmy#4634 smokes Weed"
                     )
             ],
-            ephemeral=True)
+            )
     async def select_callback(self,interaction,select):
         try:
             print("command",interaction.command)
@@ -44,7 +44,7 @@ class MySelectRace(View,):
             # info_message = f"""this is a test message {select.values}"""
             # em = discord.Embed(title = f"Test",color =discord.Color.green(),description=info_message)
 
-            await interaction.followup.send(f"You choosed {select.values}")
+            await interaction.followup.send(f"You choosed {select.values}",ephemeral=True)
         except Exception as e:
             print("error in calll back",e)
             print(interaction.response)
