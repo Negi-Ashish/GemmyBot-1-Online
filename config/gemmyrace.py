@@ -39,5 +39,6 @@ class MySelectRace(View,):
             # await interaction.response.followup.send(f"""hihihihi {select.values}""")
         except Exception as e:
             print("error in calll back",e)
+            print(type(interaction))
        
         
