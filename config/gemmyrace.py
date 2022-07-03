@@ -32,7 +32,7 @@ class MySelectRace(View,):
                     )
             ])
     async def select_callback(self,interaction,select):
-        await interaction.followup.send(f"You choosed {select.values}")
+        await interaction.response.send_mesage(f"You choosed {select.values}")
         select.disabled = True
         await interaction.response.edit_message(view=self)
         # await interaction.response.followup.send(f"""hihihihi {select.values}""")
