@@ -89,46 +89,54 @@ async def SPS(ctx,client,amount,wallet_balance,bank_balance):
         bot_sps = sps[random.randrange(0,2)]
 
         if reaction.emoji=='\U0000270A':
+            user_played = "stone"
             if bot_sps=="stone":
-                info_message = f"""\nYou played stone \nGemmy played {bot_sps} \nResult : Draw, No balance change."""
-                result = "neutral"
+                gems = f"""NA"""
+                result = "Draw"
             elif bot_sps=="paper":
-                info_message = f"""\nYou played stone \nGemmy played {bot_sps} \nResult : Lose, You lose {amount} gems."""
-                result = "lose"
+                gems = f"""-{amount}"""
+                result = "Lose"
             else:
-                info_message = f"""\nYou played stone \nGemmy played {bot_sps} \nResult : Win, You win {amount} gems."""
-                result="win"
+                gems = f"""+{amount}"""
+                result="Win"
 
         elif reaction.emoji=='\U0001F44B':
+            user_played = "paper"
             if bot_sps=="stone":
-                info_message = f"""\nYou played paper \nGemmy played {bot_sps} \nResult : Win, You win {amount} gems."""
-                result="win"
+                gems = f"""+{amount}"""
+                result="Win"
             elif bot_sps=="paper":
-                info_message = f"""\nYou played paper \nGemmy played {bot_sps} \nResult : Draw, No balance change."""
-                result = "neutral"
+                gems = f"""NA"""
+                result = "Draw"
             else:
-                info_message = f"""\nYou played paper \nGemmy played {bot_sps} \nResult : Lose, You lose {amount} gems."""
-                result = "lose"
+                gems = f"""-{amount}"""
+                result = "Lose"
 
         elif reaction.emoji=='\U0000270C':
+            user_played="scissor"
             if bot_sps=="stone":
-                info_message = f"""\nYou played scissor \nGemmy played {bot_sps} \nResult : Lose, You lose {amount} gems."""
-                result = "lose"
+                gems = f"""-{amount}"""
+                result = "Lose"
             elif bot_sps=="paper":
-                info_message = f"""\nYou played scissor \nGemmy played {bot_sps} \nResult : Win, You win {amount} gems."""
-                result="win"
+                gems = f"""+{amount}"""
+                result="Win"
             else:
-                info_message = f"""\nYou played scissor \nGemmy played {bot_sps} \nResult : Draw, No balance change."""
-                result = "neutral"
-        if result=="neutral":
+                gems = f"""NA"""
+                result = "Draw"
+
+        if result=="Draw":
             pass
-        elif result=="win":
+        elif result=="Win":
             wallet_balance=wallet_balance+amount
             await deposit_withdraw_gem(ctx.author.id,0,wallet_balance,bank_balance,"SPS")
         else:
             wallet_balance=wallet_balance-amount
             await deposit_withdraw_gem(ctx.author.id,0,wallet_balance,bank_balance,"SPS")
-        em = discord.Embed(title = f" STONE | PAPER | SCISSOR ",color =discord.Color.green(),description=info_message)
+        em = discord.Embed(title = f" STONE | PAPER | SCISSOR ",color =discord.Color.green())
+        em.add_field(name=f"{user}",value=user_played)
+        em.add_field(name="Gemmy",value=bot_sps)
+        em.add_field(name="Result",value = result)
+        em.add_field(name="Gems", value=gems)
         em.add_field(name="Wallet Balance",value = wallet_balance)
         em.add_field(name="Bank Balance",value = bank_balance)
         message = await ctx.send(embed=em)

@@ -88,8 +88,10 @@ async def bet(ctx,game_name,amount):
             em = discord.Embed(title = f"Info",color = discord.Color.red(),description=info_message)
             await ctx.send(embed = em)
             return 
-        if(amount>wallet_amount):
-            info_message = f"""Your bet amount cannot be greater than your wallet balance ({wallet_amount})"""
+        if(amount>wallet_amount or amount>1000):
+            if amount>1000:
+                wallet_amount = 1000
+            info_message = f"""Your bet amount cannot be greater than ({wallet_amount}) gems"""
             em = discord.Embed(title = f"Info",color = discord.Color.red(),description=info_message)
             await ctx.send(embed = em)
             return 
