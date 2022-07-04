@@ -79,7 +79,7 @@ async def SPS(ctx,client,amount,wallet_balance,bank_balance):
         info_message = "\nplease select your choice within 20 seconds."
         em = discord.Embed(title = f" STONE | PAPER | SCISSOR ",color =discord.Color.green(),description=info_message)
         message = await ctx.send(embed=em)
-        await message.add_reaction('\U0000270A')
+        await message.add_reaction(':rock:')
         await message.add_reaction('\U0001F44B')
         await message.add_reaction('\U0000270C')
 
@@ -88,8 +88,8 @@ async def SPS(ctx,client,amount,wallet_balance,bank_balance):
         sps = {0:"stone",1:"paper",2:"scissor"}
         bot_sps = sps[random.randrange(0,2)]
 
-        if reaction.emoji=='\U0000270A':
-            user_played = "<:fist::skin-tone-1:> stone"
+        if reaction.emoji==':rock:':
+            user_played = ":rock: stone"
             if bot_sps=="stone":
                 gems = f"""NA"""
                 result = "Draw"
@@ -101,7 +101,7 @@ async def SPS(ctx,client,amount,wallet_balance,bank_balance):
                 result="Win"
 
         elif reaction.emoji=='\U0001F44B':
-            user_played = "paper"
+            user_played = ":newspaper: paper"
             if bot_sps=="stone":
                 gems = f"""+{amount}"""
                 result="Win"
@@ -113,7 +113,7 @@ async def SPS(ctx,client,amount,wallet_balance,bank_balance):
                 result = "Lose"
 
         elif reaction.emoji=='\U0000270C':
-            user_played="scissor"
+            user_played=":scissors: scissor"
             if bot_sps=="stone":
                 gems = f"""-{amount}"""
                 result = "Lose"
