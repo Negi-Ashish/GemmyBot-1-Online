@@ -89,7 +89,7 @@ async def SPS(ctx,client,amount,wallet_balance,bank_balance):
         bot_sps = sps[random.randrange(0,2)]
 
         if reaction.emoji=='\U0000270A':
-            user_played = "stone"
+            user_played = "<:fist::skin-tone-1:> stone"
             if bot_sps=="stone":
                 gems = f"""NA"""
                 result = "Draw"
