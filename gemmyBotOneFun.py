@@ -134,8 +134,8 @@ async def SPS(ctx,client,amount,wallet_balance,bank_balance):
             await deposit_withdraw_gem(ctx.author.id,0,wallet_balance,bank_balance,"SPS")
         
         em = discord.Embed(title = f" STONE | PAPER | SCISSOR ",color =discord.Color.green(),description="\n\n")
-        em.add_field(name=f"{ctx.author.name} \nPlayed",value=user_played)
-        em.add_field(name="Gemmy \nPlayed",value=bot_sps)
+        em.add_field(name=f"{ctx.author.name}",value=user_played)
+        em.add_field(name="Gemmy ",value=bot_sps)
         em.add_field(name="Result",value = result)
         em.add_field(name="Gems", value=gems)
         em.add_field(name="Wallet Balance",value = wallet_balance)
