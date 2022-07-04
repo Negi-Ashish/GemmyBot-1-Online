@@ -89,47 +89,47 @@ async def SPS(ctx,client,amount,wallet_balance,bank_balance):
         bot_sps = sps[random.randrange(0,2)]
 
         if reaction.emoji=='\U0001FAA8':
-            user_played = ":rock: stone"
+            user_played = ":rock:"
             if bot_sps=="stone":
-                bot_sps=f":rock: {bot_sps}"
+                bot_sps=f":rock:"
                 gems = f"""NA"""
                 result = "Draw"
             elif bot_sps=="paper":
-                bot_sps=f":newspaper: {bot_sps}"
+                bot_sps=f":newspaper:"
                 gems = f"""-{amount}"""
                 result = "Lose"
             else:
-                bot_sps=f":scissors: {bot_sps}"
+                bot_sps=f":scissors:"
                 gems = f"""+{amount}"""
                 result="Win"
 
         elif reaction.emoji=='\U0001F4F0':
-            user_played = ":newspaper: paper"
+            user_played = ":newspaper:"
             if bot_sps=="stone":
-                bot_sps=f":rock: {bot_sps}"
+                bot_sps=f":rock:"
                 gems = f"""+{amount}"""
                 result="Win"
             elif bot_sps=="paper":
-                bot_sps=f":newspaper: {bot_sps}"
+                bot_sps=f":newspaper:"
                 gems = f"""NA"""
                 result = "Draw"
             else:
-                bot_sps=f":scissors: {bot_sps}"
+                bot_sps=f":scissors:"
                 gems = f"""-{amount}"""
                 result = "Lose"
 
         elif reaction.emoji=='\U00002702':
-            user_played=":scissors: scissor"
+            user_played=":scissors:"
             if bot_sps=="stone":
-                bot_sps=f":rock: {bot_sps}"
+                bot_sps=f":rock:"
                 gems = f"""-{amount}"""
                 result = "Lose"
             elif bot_sps=="paper":
-                bot_sps=f":newspaper: {bot_sps}"
+                bot_sps=f":newspaper:"
                 gems = f"""+{amount}"""
                 result="Win"
             else:
-                bot_sps=f":scissors: {bot_sps}"
+                bot_sps=f":scissors:"
                 gems = f"""NA"""
                 result = "Draw"
 
@@ -142,11 +142,11 @@ async def SPS(ctx,client,amount,wallet_balance,bank_balance):
             wallet_balance=wallet_balance-amount
             await deposit_withdraw_gem(ctx.author.id,0,wallet_balance,bank_balance,"SPS")
         
-        em = discord.Embed(title = f" STONE | PAPER | SCISSOR ",color =discord.Color.green(),description="<:921:992093550772760647> The game proceeded as \n")
-        em.add_field(name=f"<:1456:992093539360051281> {ctx.author.name}",value=user_played,inline=False)
-        em.add_field(name="<:1669:992093541742415882> Gemmy ",value=bot_sps,inline=False)
-        em.add_field(name="<:2495:992093547069186078> Result",value = f":heart_on_fire: {result} \n",inline=False)
-        em.add_field(name="Gems", value=f":moneybag: {gems}",inline=False)
+        em = discord.Embed(title = f" STONE | PAPER | SCISSOR ",color =discord.Color.green(),description="<:921:992093550772760647> <:1456:992093539360051281> <:1669:992093541742415882>  <:2495:992093547069186078> ")
+        em.add_field(name=f"{ctx.author.name}",value=user_played,inline=False)
+        em.add_field(name="Gemmy ",value=bot_sps,inline=False)
+        em.add_field(name="Result",value = f" {result} :heart_on_fire:\n",inline=False)
+        em.add_field(name="Gems", value=f" {gems} :moneybag:",inline=False)
         em.add_field(name="Wallet Balance",value = wallet_balance)
         em.add_field(name="Bank Balance",value = bank_balance)
         message = await ctx.send(embed=em)
