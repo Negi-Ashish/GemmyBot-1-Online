@@ -134,18 +134,21 @@ async def SPS(ctx,client,amount,wallet_balance,bank_balance):
                 result = "Draw"
 
         if result=="Draw":
+            result="Draw :slight_smile:"
             pass
         elif result=="Win":
+            result = "Win :heart_eyes:"
             wallet_balance=wallet_balance+amount
             await deposit_withdraw_gem(ctx.author.id,0,wallet_balance,bank_balance,"SPS")
         else:
+            result="Lose :cry:"
             wallet_balance=wallet_balance-amount
             await deposit_withdraw_gem(ctx.author.id,0,wallet_balance,bank_balance,"SPS")
         
         em = discord.Embed(title = f" STONE | PAPER | SCISSOR ",color =discord.Color.green(),description="<:921:992093550772760647> <:1456:992093539360051281> <:1669:992093541742415882>  <:2495:992093547069186078> ")
         em.add_field(name=f"{ctx.author.name}",value=user_played,inline=False)
         em.add_field(name="Gemmy ",value=bot_sps,inline=False)
-        em.add_field(name="Result",value = f" {result} :heart_on_fire:\n",inline=False)
+        em.add_field(name="Result",value = f" {result}\n",inline=False)
         em.add_field(name="Gems", value=f" {gems} :moneybag:",inline=False)
         em.add_field(name="Wallet Balance",value = wallet_balance)
         em.add_field(name="Bank Balance",value = bank_balance)
