@@ -77,7 +77,7 @@ async def deposit_withdraw_gem(userID,amount,wallet_balance,bank_balance,method)
 async def SPS(ctx,client,amount,wallet_balance,bank_balance):
     try:
         info_message = "\nplease select your choice within 20 seconds."
-        em = discord.Embed(title = f" STONE | PAPER | SCISSOR ",color =discord.Color.green(),description=info_message)
+        em = discord.Embed(title = f" STONE | PAPER | SCISSOR <:3755:994261485649920001>",color =discord.Color.green(),description=info_message)
         message = await ctx.send(embed=em)
         await message.add_reaction('\U0001FAA8')
         await message.add_reaction('\U0001F4F0')
