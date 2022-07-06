@@ -177,31 +177,39 @@ async def fortune_teller(userID,wallet_balance,bank_balance):
 
 async def RTD(ctx,amount,wallet_balance,bank_balance):
     try:
+        em = discord.Embed(title = f" RTD ",color =discord.Color.green(),description="<:921:992093550772760647> <:1456:992093539360051281> <:1669:992093541742415882>  <:2495:992093547069186078> <:4634:992093544238034975>")
         bonus=False
         dice_one = random.randrange(1,6)
         dice_two = random.randrange(1,6)
         player_result = dice_one+dice_two
         if(dice_one==dice_two):
             bonus = True
-        info_message = f"""You played {dice_one} and {dice_two} with a total of {player_result}."""
+        # info_message = f"""You played {dice_one} and {dice_two} with a total of {player_result}."""
+        em.add_field(name="You Rolled",value = f":game_die:{dice_one} :game_die:{dice_two}")
+        em.add_field(name="Your Total",value = f":game_die:{dice_one+dice_two}")
         dice_one = random.randrange(1,6)
         dice_two = random.randrange(1,6)  
         gemmy_result = dice_one+dice_two    
-        info_message = " ".join([info_message,f"""\nGemmy played {dice_one} and {dice_two} with a total of {gemmy_result}."""])
+        # info_message = " ".join([info_message,f"""\nGemmy played {dice_one} and {dice_two} with a total of {gemmy_result}."""])
+        em.add_field(name="Gemmy Rolled",value = f":game_die:{dice_one} :game_die:{dice_two}")
+        em.add_field(name="Gemmy Total",value = f":game_die:{dice_one+dice_two}")
         if(player_result<gemmy_result):
             wallet_balance=wallet_balance-amount
             await deposit_withdraw_gem(ctx.author.id,0,wallet_balance,bank_balance,"SPS")
-            info_message = " ".join([info_message,f"""\nResult : Lose, You lose {amount} gems."""])
+            # info_message = " ".join([info_message,f"""\nResult : Lose, You lose {amount} gems."""])
         elif(player_result>gemmy_result):
             if bonus:
                 amount=amount*2
-                info_message = " ".join([info_message,f"""\nCongrulations!! You are eligible for a gemmy bonus as you rolled numbers that Gemmy likes!"""])
+                em.set_footer(text = f"Congrulations!! You got gemmy bonus as you rolled numbers that Gemmy likes!")
+                # info_message = " ".join([info_message,f"""\nCongrulations!! You got gemmy bonus as you rolled numbers that Gemmy likes!"""])
             wallet_balance=wallet_balance+amount
             await deposit_withdraw_gem(ctx.author.id,0,wallet_balance,bank_balance,"SPS")
-            info_message = " ".join([info_message,f"""\nResult : Win, You win {amount} gems."""])
+            em.add_field(name="Result",value = "Win :heart_eyes:")
+            # info_message = " ".join([info_message,f"""\nResult : Win, You win {amount} gems."""])
         else:
-            info_message = " ".join([info_message,f"""\nResult : Draw, No balance change."""])
-        em = discord.Embed(title = f" RTD ",color =discord.Color.green(),description=info_message)
+            em.add_field(name="Result",value = "Loose :cry:")
+            # info_message = " ".join([info_message,f"""\nResult : Draw, No balance change."""])
+        
         em.add_field(name="Wallet Balance",value = wallet_balance)
         em.add_field(name="Bank Balance",value = bank_balance)
         await ctx.send(embed=em)
