@@ -49,13 +49,13 @@ class MySelectRace(View):
                 em = discord.Embed(title = f"Gemmy Race",color =discord.Color.green())
                 await interaction.response.edit_message(view=self)
                 # info_message = f"""You have selected {select.values[0]}"""
-                em.add_field(name="Selected Gemmy", value=f" {select.values[0]} :",inline=False)
                 # info_message= ""
-                gemmy_list = ["Gemmy#921","Gemmy#1456","Gemmy#4634","Gemmy#1669","Gemmy#2495"]
-                winner_gemmy = random.randrange(0,4)
+                gemmy_dict = {"Gemmy#921":"<:921:992093550772760647>","Gemmy#1456":"<:1456:992093539360051281>","Gemmy#4634":"<:4634:992093544238034975>","Gemmy#1669":"<:1669:992093541742415882>","Gemmy#2495":"<:2495:992093547069186078>"}
+                em.add_field(name="Selected Gemmy", value=f" {gemmy_dict[select.values[0]]} :",inline=False)
+                winner_gemmy = random.choice(list(gemmy_dict.keys()))
                 # info_message = " ".join([info_message,f"""\nAnd {gemmy_list[winner_gemmy]} has won the race."""])
-                em.add_field(name="Winner Gemmy", value=f" {gemmy_list[winner_gemmy]} ",inline=False)
-                if select.values[0]!=gemmy_list[winner_gemmy]:
+                em.add_field(name="Winner Gemmy", value=f" {gemmy_dict[winner_gemmy]} ",inline=False)
+                if select.values[0]!=winner_gemmy:
                     em.add_field(name="Result",value = "Loose")
                     em.add_field(name="Gems", value=f" -{self.amount} :moneybag:",inline=False)
                     # info_message = " ".join([info_message,f"""\nResult : Lose, You lose {self.amount} gems."""])

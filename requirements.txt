@@ -1,3 +1,4 @@
 requests==2.27.1
 discord.py @ git+https://github.com/Rapptz/discord.py
 discord-interactions.py==0.0.8
+discord-select-menus==0.0.1
