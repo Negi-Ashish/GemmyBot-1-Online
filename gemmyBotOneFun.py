@@ -1,8 +1,6 @@
 from email import message
 from http import client
 from typing import final
-
-from sqlalchemy import false
 import config.constants as const;
 import requests;
 import discord;
@@ -179,7 +177,7 @@ async def fortune_teller(userID,wallet_balance,bank_balance):
 
 async def RTD(ctx,amount,wallet_balance,bank_balance):
     try:
-        em = discord.Embed(title = f" RTD ",color =discord.Color.green(),description="<:921:992093550772760647> <:1456:992093539360051281> <:1669:992093541742415882>  <:2495:992093547069186078> <:4634:992093544238034975>")
+        em = discord.Embed(title = f" RTD <:3755:994261485649920001>",color =discord.Color.green(),description="<:921:992093550772760647> <:1456:992093539360051281> <:1669:992093541742415882>  <:2495:992093547069186078> <:4634:992093544238034975>")
         bonus=False
         dice_one = random.randrange(1,6)
         dice_two = random.randrange(1,6)
