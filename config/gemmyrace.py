@@ -60,13 +60,13 @@ class MySelectRace(View):
                     em.add_field(name="Gems", value=f" -{self.amount} :moneybag:",inline=False)
                     # info_message = " ".join([info_message,f"""\nResult : Lose, You lose {self.amount} gems."""])
                     # info_message = " ".join([info_message,f"""\nWinning a race will grant you five times the gems you bet."""])
-                    em.set_footer(f"""\nWinning a race will grant you five times the gems you bet.""")
+                    em.set_footer("Winning a race will grant you five times the gems you bet.")
                     self.wallet_balance = self.wallet_balance-self.amount
                 else:
                     em.add_field(name="Result",value = "Win")
                     # info_message = " ".join([info_message,f"""\nResult : Win, Congrulations!! You won {self.amount * 5} gems."""])
                     em.add_field(name="Gems", value=f" +{self.amount * 5} :moneybag:",inline=False)
-                    em.set_footer(f"""\nCongrulations!! You won {self.amount * 5} gems.""")
+                    em.set_footer(f"Congrulations!! You won {self.amount * 5} gems.")
                     self.wallet_balance = self.wallet_balance+(self.amount * 5)
                 if(self.wallet_balance<0 or self.bank_balance<0):
                     print("There was a impossible Error in deposit_withdraw_gem")
