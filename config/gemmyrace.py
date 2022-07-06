@@ -46,9 +46,11 @@ class MySelectRace(View):
         try:
             if(self.ctx.author==interaction.user):
                 select.disabled = True
+                em = discord.Embed(title = f"Gemmy Race",color =discord.Color.green())
                 await interaction.response.edit_message(view=self)
-                info_message = f"""You have selected {select.values[0]}"""
-                em = discord.Embed(title = f"Gemmy Race",color =discord.Color.green(),description=info_message)
+                # info_message = f"""You have selected {select.values[0]}"""
+                em.add_field(name="Gemmy Selected", value=f" {select.values[0]} :",inline=False)
+                
                 gemmy_list = ["Gemmy#921","Gemmy#1456","Gemmy#4634","Gemmy#1669","Gemmy#2495"]
                 winner_gemmy = random.randrange(0,4)
                 info_message = " ".join([info_message,f"""\nAnd {gemmy_list[winner_gemmy]} has won the race."""])
