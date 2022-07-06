@@ -58,7 +58,7 @@ async def balance(ctx):
         await open_account(ctx.author)
         balance = await get_balance(ctx.author.id)
         wallet_amount,bank_amount = balance['wallet_balance'],balance['bank_balance']
-        em = discord.Embed(title = f"{ctx.author.name}'s balance",color =discord.Color.blue())
+        em = discord.Embed(title = f"{ctx.author.name}'s balance <:3755:994261485649920001>",color =discord.Color.blue())
         em.add_field(name="Wallet Balance",value = wallet_amount)
         em.add_field(name="Bank Balance",value = bank_amount)
         await ctx.send(embed = em)
@@ -85,14 +85,14 @@ async def bet(ctx,game_name,amount):
         amount = int(amount)
         if(amount<20):
             info_message = f"""Your bet amount cannot be smaller than 20"""
-            em = discord.Embed(title = f"Info",color = discord.Color.red(),description=info_message)
+            em = discord.Embed(title = f"<:3755:994261485649920001> Info",color = discord.Color.red(),description=info_message)
             await ctx.send(embed = em)
             return 
         if(amount>wallet_amount or amount>1000):
             if amount>1000:
                 wallet_amount = 1000
             info_message = f"""Your bet amount cannot be greater than ({wallet_amount}) gems"""
-            em = discord.Embed(title = f"Info",color = discord.Color.red(),description=info_message)
+            em = discord.Embed(title = f"<:3755:994261485649920001> Info",color = discord.Color.red(),description=info_message)
             await ctx.send(embed = em)
             return 
         if game_name=="sps":
@@ -104,7 +104,7 @@ async def bet(ctx,game_name,amount):
 
     except:
         info_message = f"""You dont have a account yet. Typle "!gemmy balance" to create one."""
-        em = discord.Embed(title = f"Create your free account today!",color = discord.Color.red(),description=info_message)
+        em = discord.Embed(title = f"<:3755:994261485649920001> Create your free account today!",color = discord.Color.red(),description=info_message)
         await ctx.send(embed = em)
 
 
@@ -120,12 +120,12 @@ async def deposit(ctx,amount):
             wallet_amount,bank_amount = balance['wallet_balance'],balance['bank_balance']
             if amount>wallet_amount:
                 info_message = f"""Your deposit amount cannot be greater than {wallet_amount}"""
-                em = discord.Embed(title = f"Info",color = discord.Color.red(),description=info_message)
+                em = discord.Embed(title = f"<:3755:994261485649920001> Info",color = discord.Color.red(),description=info_message)
                 await ctx.send(embed = em)
             else:
                 await deposit_withdraw_gem(ctx.author.id,amount,wallet_amount,bank_amount,"deposit")
                 info_message = f"""Your have successfully deposited {amount} gem to your bank account, Your current bank balance is {(bank_amount+amount)}"""
-                em = discord.Embed(title = f"Deposit Success!",color = discord.Color.red(),description=info_message)
+                em = discord.Embed(title = f"<:3755:994261485649920001> Deposit Success!",color = discord.Color.red(),description=info_message)
                 await ctx.send(embed = em)
         except:
             info_message = """PLease contact MOD for help"""
@@ -133,7 +133,7 @@ async def deposit(ctx,amount):
             await ctx.send(embed = em)
     else:
         info_message = """You currently dont have a account. Type '!gemmy balance' to create a account"""
-        em = discord.Embed(title = f"Create your free account today!",color =discord.Color.red(),description=info_message)
+        em = discord.Embed(title = f"<:3755:994261485649920001> Create your free account today!",color =discord.Color.red(),description=info_message)
         await ctx.send(embed = em)
 
 
@@ -147,20 +147,20 @@ async def withdraw(ctx,amount):
             wallet_amount,bank_amount = balance['wallet_balance'],balance['bank_balance']
             if amount>bank_amount:
                 info_message = f"""Your withdraw amount cannot be greater than {bank_amount}"""
-                em = discord.Embed(title = f"Info",color = discord.Color.red(),description=info_message)
+                em = discord.Embed(title = f"<:3755:994261485649920001> Info",color = discord.Color.red(),description=info_message)
                 await ctx.send(embed = em)
             else:
                 await deposit_withdraw_gem(ctx.author.id,amount,wallet_amount,bank_amount,"withdraw")
                 info_message = f"""Your have successfully withdraw {amount} gem to your bank account, Your current bank balance is {(bank_amount-amount)}"""
-                em = discord.Embed(title = f"Withdraw Success!",color = discord.Color.red(),description=info_message)
+                em = discord.Embed(title = f"<:3755:994261485649920001> Withdraw Success!",color = discord.Color.red(),description=info_message)
                 await ctx.send(embed = em)
         except:
             info_message = """PLease contact MOD for help"""
-            em = discord.Embed(title = f"Withdraw ERROR",color =discord.Color.red(),description=info_message)
+            em = discord.Embed(title = f"<:3755:994261485649920001> Withdraw ERROR",color =discord.Color.red(),description=info_message)
             await ctx.send(embed = em)
     else:
         info_message = """You currently dont have a account. Type '!gemmy balance' to create a account"""
-        em = discord.Embed(title = f"Create your free account today!",color =discord.Color.red(),description=info_message)
+        em = discord.Embed(title = f"<:3755:994261485649920001> Create your free account today!",color =discord.Color.red(),description=info_message)
         await ctx.send(embed = em)
 
 
@@ -175,12 +175,12 @@ async def fortune(ctx):
             await ctx.send(embed = em)
         else:
             message = await fortune_teller(ctx.author.id,(wallet_amount-50),bank_amount)
-            em = discord.Embed(title = f"Your Fortune",color =discord.Color.blue(),description=message)
+            em = discord.Embed(title = f"Your Fortune <:3755:994261485649920001>",color =discord.Color.blue(),description=message)
             await ctx.send(embed = em)
 
     except:
         info_message = """You currently dont have a account. Type '!gemmy balance' to create a account"""
-        em = discord.Embed(title = f"Create your free account today!",color =discord.Color.red(),description=info_message)
+        em = discord.Embed(title = f"<:3755:994261485649920001> Create your free account today!",color =discord.Color.red(),description=info_message)
         await ctx.send(embed = em)
 
 
