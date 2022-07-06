@@ -50,7 +50,7 @@ class MySelectRace(View):
                 await interaction.response.edit_message(view=self)
                 # info_message = f"""You have selected {select.values[0]}"""
                 em.add_field(name="Gemmy Selected", value=f" {select.values[0]} :",inline=False)
-                
+                info_message= ""
                 gemmy_list = ["Gemmy#921","Gemmy#1456","Gemmy#4634","Gemmy#1669","Gemmy#2495"]
                 winner_gemmy = random.randrange(0,4)
                 info_message = " ".join([info_message,f"""\nAnd {gemmy_list[winner_gemmy]} has won the race."""])
