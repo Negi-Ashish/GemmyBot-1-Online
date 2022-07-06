@@ -46,7 +46,7 @@ class MySelectRace(View):
         try:
             if(self.ctx.author==interaction.user):
                 select.disabled = True
-                em = discord.Embed(title = f"Gemmy Race <:3755:994261485649920001>",color =discord.Color.green())
+                em = discord.Embed(title = f"Gemmy Race <:3755:994261485649920001>",color =discord.Color.green(),description="<:921:992093550772760647> <:1456:992093539360051281> <:1669:992093541742415882>  <:2495:992093547069186078> <:4634:992093544238034975>")
                 await interaction.response.edit_message(view=self)
                 # info_message = f"""You have selected {select.values[0]}"""
                 # info_message= ""
