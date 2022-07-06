@@ -54,7 +54,7 @@ class MySelectRace(View):
                 gemmy_list = ["Gemmy#921","Gemmy#1456","Gemmy#4634","Gemmy#1669","Gemmy#2495"]
                 winner_gemmy = random.randrange(0,4)
                 # info_message = " ".join([info_message,f"""\nAnd {gemmy_list[winner_gemmy]} has won the race."""])
-                em.add_field(name="Winner Gemmy", value=f" {winner_gemmy} :",inline=False)
+                em.add_field(name="Winner Gemmy", value=f" {gemmy_list[winner_gemmy]} ",inline=False)
                 if select.values[0]!=gemmy_list[winner_gemmy]:
                     em.add_field(name="Result",value = "Loose")
                     em.add_field(name="Gems", value=f" -{self.amount} :moneybag:",inline=False)
