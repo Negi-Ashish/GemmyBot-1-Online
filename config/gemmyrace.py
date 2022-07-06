@@ -49,21 +49,22 @@ class MySelectRace(View):
                 em = discord.Embed(title = f"Gemmy Race",color =discord.Color.green())
                 await interaction.response.edit_message(view=self)
                 # info_message = f"""You have selected {select.values[0]}"""
-                em.add_field(name="Gemmy Selected", value=f" {select.values[0]} :",inline=False)
-                info_message= ""
+                em.add_field(name="Selected Gemmy", value=f" {select.values[0]} :",inline=False)
+                # info_message= ""
                 gemmy_list = ["Gemmy#921","Gemmy#1456","Gemmy#4634","Gemmy#1669","Gemmy#2495"]
                 winner_gemmy = random.randrange(0,4)
-                info_message = " ".join([info_message,f"""\nAnd {gemmy_list[winner_gemmy]} has won the race."""])
+                # info_message = " ".join([info_message,f"""\nAnd {gemmy_list[winner_gemmy]} has won the race."""])
+                em.add_field(name="Winner Gemmy", value=f" {winner_gemmy} :",inline=False)
                 if select.values[0]!=gemmy_list[winner_gemmy]:
                     em.add_field(name="Result",value = "Loose")
-                    em.add_field(name="Gems", value=f" {self.amount * 5} :moneybag:",inline=False)
+                    em.add_field(name="Gems", value=f" -{self.amount} :moneybag:",inline=False)
                     # info_message = " ".join([info_message,f"""\nResult : Lose, You lose {self.amount} gems."""])
                     info_message = " ".join([info_message,f"""\nWinning a race will grant you five times the gems you bet."""])
                     self.wallet_balance = self.wallet_balance-self.amount
                 else:
                     em.add_field(name="Result",value = "Win")
                     # info_message = " ".join([info_message,f"""\nResult : Win, Congrulations!! You won {self.amount * 5} gems."""])
-                    em.add_field(name="Gems", value=f" {self.amount * 5} :moneybag:",inline=False)
+                    em.add_field(name="Gems", value=f" +{self.amount * 5} :moneybag:",inline=False)
                     self.wallet_balance = self.wallet_balance+(self.amount * 5)
                 if(self.wallet_balance<0 or self.bank_balance<0):
                     print("There was a impossible Error in deposit_withdraw_gem")
