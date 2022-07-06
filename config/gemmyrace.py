@@ -51,19 +51,19 @@ class MySelectRace(View):
                 # info_message = f"""You have selected {select.values[0]}"""
                 # info_message= ""
                 gemmy_dict = {"Gemmy#921":"<:921:992093550772760647>","Gemmy#1456":"<:1456:992093539360051281>","Gemmy#4634":"<:4634:992093544238034975>","Gemmy#1669":"<:1669:992093541742415882>","Gemmy#2495":"<:2495:992093547069186078>"}
-                em.add_field(name="Selected Gemmy", value=f" {gemmy_dict[select.values[0]]} :",inline=False)
+                em.add_field(name="Selected Gemmy", value=f" {gemmy_dict[select.values[0]]} ",inline=False)
                 winner_gemmy = random.choice(list(gemmy_dict.keys()))
                 # info_message = " ".join([info_message,f"""\nAnd {gemmy_list[winner_gemmy]} has won the race."""])
                 em.add_field(name="Winner Gemmy", value=f" {gemmy_dict[winner_gemmy]} ",inline=False)
                 if select.values[0]!=winner_gemmy:
-                    em.add_field(name="Result",value = "Loose")
+                    em.add_field(name="Result",value = "Loose :cry:")
                     em.add_field(name="Gems", value=f" -{self.amount} :moneybag:",inline=False)
                     # info_message = " ".join([info_message,f"""\nResult : Lose, You lose {self.amount} gems."""])
                     # info_message = " ".join([info_message,f"""\nWinning a race will grant you five times the gems you bet."""])
                     em.set_footer(text= "Winning a race will grant you five times the gems you bet.")
                     self.wallet_balance = self.wallet_balance-self.amount
                 else:
-                    em.add_field(name="Result",value = "Win")
+                    em.add_field(name="Result",value = "Win :heart_eyes:")
                     # info_message = " ".join([info_message,f"""\nResult : Win, Congrulations!! You won {self.amount * 5} gems."""])
                     em.add_field(name="Gems", value=f" +{self.amount * 5} :moneybag:",inline=False)
                     em.set_footer(text = f"Congrulations!! You won {self.amount * 5} gems.")

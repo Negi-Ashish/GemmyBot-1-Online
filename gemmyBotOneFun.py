@@ -219,7 +219,7 @@ async def RTD(ctx,amount,wallet_balance,bank_balance):
 async def RACE(ctx,client,amount,wallet_balance,bank_balance):
     try:
         if(amount>200):
-            info_message = """Youcannot bet more than 200 gems on a race """
+            info_message = """You cannot bet more than 200 gems on a race """
             em = discord.Embed(title = f"Info",color =discord.Color.red(),description=info_message)
             await ctx.send(embed = em)
             return
