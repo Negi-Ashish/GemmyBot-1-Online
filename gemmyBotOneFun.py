@@ -196,6 +196,7 @@ async def RTD(ctx,amount,wallet_balance,bank_balance):
         if(player_result<gemmy_result):
             wallet_balance=wallet_balance-amount
             await deposit_withdraw_gem(ctx.author.id,0,wallet_balance,bank_balance,"SPS")
+            em.add_field(name="Result",value = "Loose :cry:")
             # info_message = " ".join([info_message,f"""\nResult : Lose, You lose {amount} gems."""])
         elif(player_result>gemmy_result):
             if bonus:
@@ -207,7 +208,7 @@ async def RTD(ctx,amount,wallet_balance,bank_balance):
             em.add_field(name="Result",value = "Win :heart_eyes:")
             # info_message = " ".join([info_message,f"""\nResult : Win, You win {amount} gems."""])
         else:
-            em.add_field(name="Result",value = "Loose :cry:")
+            em.add_field(name="Result",value = "Draw :slight_smile:")
             # info_message = " ".join([info_message,f"""\nResult : Draw, No balance change."""])
         
         em.add_field(name="Wallet Balance",value = wallet_balance)
