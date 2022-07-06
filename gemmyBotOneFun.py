@@ -1,6 +1,8 @@
 from email import message
 from http import client
 from typing import final
+
+from sqlalchemy import false
 import config.constants as const;
 import requests;
 import discord;
@@ -185,18 +187,18 @@ async def RTD(ctx,amount,wallet_balance,bank_balance):
         if(dice_one==dice_two):
             bonus = True
         # info_message = f"""You played {dice_one} and {dice_two} with a total of {player_result}."""
-        em.add_field(name="You Rolled",value = f":game_die:{dice_one} :game_die:{dice_two}")
-        em.add_field(name="Your Total",value = f":game_die:{dice_one+dice_two}")
+        em.add_field(name="You Rolled",value = f"[:game_die:{dice_one}]  [:game_die:{dice_two}]",inline=False)
+        em.add_field(name="Your Total",value = f":game_die:{dice_one+dice_two}",inline=False)
         dice_one = random.randrange(1,6)
         dice_two = random.randrange(1,6)  
         gemmy_result = dice_one+dice_two    
         # info_message = " ".join([info_message,f"""\nGemmy played {dice_one} and {dice_two} with a total of {gemmy_result}."""])
-        em.add_field(name="Gemmy Rolled",value = f":game_die:{dice_one} :game_die:{dice_two}")
-        em.add_field(name="Gemmy Total",value = f":game_die:{dice_one+dice_two}")
+        em.add_field(name="Gemmy Rolled",value = f"[:game_die:{dice_one}]  [:game_die:{dice_two}]",inline=False)
+        em.add_field(name="Gemmy Total",value = f":game_die:{dice_one+dice_two}",inline=False)
         if(player_result<gemmy_result):
             wallet_balance=wallet_balance-amount
             await deposit_withdraw_gem(ctx.author.id,0,wallet_balance,bank_balance,"SPS")
-            em.add_field(name="Result",value = "Loose :cry:")
+            em.add_field(name="Result",value = "Loose :cry:",inline=False)
             # info_message = " ".join([info_message,f"""\nResult : Lose, You lose {amount} gems."""])
         elif(player_result>gemmy_result):
             if bonus:
@@ -205,10 +207,10 @@ async def RTD(ctx,amount,wallet_balance,bank_balance):
                 # info_message = " ".join([info_message,f"""\nCongrulations!! You got gemmy bonus as you rolled numbers that Gemmy likes!"""])
             wallet_balance=wallet_balance+amount
             await deposit_withdraw_gem(ctx.author.id,0,wallet_balance,bank_balance,"SPS")
-            em.add_field(name="Result",value = "Win :heart_eyes:")
+            em.add_field(name="Result",value = "Win :heart_eyes:",inline=False)
             # info_message = " ".join([info_message,f"""\nResult : Win, You win {amount} gems."""])
         else:
-            em.add_field(name="Result",value = "Draw :slight_smile:")
+            em.add_field(name="Result",value = "Draw :slight_smile:",inline=False)
             # info_message = " ".join([info_message,f"""\nResult : Draw, No balance change."""])
         
         em.add_field(name="Wallet Balance",value = wallet_balance)
