@@ -72,7 +72,7 @@ class MySelectRace(View):
                 headers = {"GEMMY_ACCESS_TOKEN":const.GEMMY_ACCESS_TOKEN,"Content-Type": "application/json; charset=utf-8"}
                 requests.put(const.UPDATE_BALANCE, json=account_json,headers=headers)
                 
-                em.description(info_message)
+                # em.description(info_message)
                 em.add_field(name="Wallet Balance",value = self.wallet_balance)
                 em.add_field(name="Bank Balance",value = self.bank_balance)
                 await interaction.followup.send(embed=em)
