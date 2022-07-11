@@ -192,6 +192,7 @@ async def fd(ctx,amount):
         await open_account(ctx.author)
         earnings_message = await fd_gem(ctx.author.id,amount)
         em = discord.Embed(title = f"Info",color =discord.Color.green(),description=earnings_message)
+        em.set_footer(text = f"You can earn maximum of 1500 gems as interest.")
         await ctx.send(embed = em)
     except:
         info_message = """You currently dont have a enough balance to open a FD"""
