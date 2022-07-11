@@ -57,10 +57,11 @@ async def balance(ctx):
     try:
         await open_account(ctx.author)
         balance = await get_balance(ctx.author.id)
-        wallet_amount,bank_amount = balance['wallet_balance'],balance['bank_balance']
+        wallet_amount,bank_amount,fixed_deposit = balance['wallet_balance'],balance['bank_balance'],balance['fixed_deposit']
         em = discord.Embed(title = f"{ctx.author.name}'s balance <:3755:994261485649920001>",color =discord.Color.blue())
         em.add_field(name="Wallet Balance",value = wallet_amount)
         em.add_field(name="Bank Balance",value = bank_amount)
+        em.add_field(name="Fixed Deposit",value = fixed_deposit)
         await ctx.send(embed = em)
     except:
         print("error in balance")
