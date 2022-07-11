@@ -6,7 +6,7 @@ import config.constants as const;
 import json;
 
 
-from gemmyBotOneFun import open_account,get_balance,earn_gem,SPS,check_existance,deposit_withdraw_gem,fortune_teller,RTD,RACE;
+from gemmyBotOneFun import open_account,get_balance,earn_gem,SPS,check_existance,deposit_withdraw_gem,fortune_teller,RTD,RACE,fd_gem;
 
 # client = commands.Bot(command_prefix='!gemmy ')
 client = commands.Bot(command_prefix='!gemmy ',intents=discord.Intents.all())
@@ -186,3 +186,14 @@ async def fortune(ctx):
         await ctx.send(embed = em)
 
 
+@client.command()
+async def fd(ctx,amount):
+    try:
+        await open_account(ctx.author)
+        earnings_message = await fd_gem(ctx.author.id,amount)
+        em = discord.Embed(title = f"Info",color =discord.Color.green(),description=earnings_message)
+        await ctx.send(embed = em)
+    except:
+        info_message = """You currently dont have a enough balance to open a FD"""
+        em = discord.Embed(title = f"<:3755:994261485649920001> Play with gemmy to Earn!",color =discord.Color.red(),description=info_message)
+        await ctx.send(embed = em)

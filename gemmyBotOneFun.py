@@ -244,3 +244,14 @@ async def RACE(ctx,client,amount,wallet_balance,bank_balance):
         info_message = """You currently dont have a account. Type '!gemmy balance' to create a account"""
         em = discord.Embed(title = f"Create your free account today!",color =discord.Color.red(),description=info_message)
         await ctx.send(embed = em)
+
+
+async def fd_gem(userID,amount):
+    try:
+        api_url = f"""{const.FIXED_DEPOSIT}"""
+        headers = {"GEMMY_ACCESS_TOKEN": const.GEMMY_ACCESS_TOKEN,"Content-Type": "application/json; charset=utf-8"}
+        account_json = {"userId":userID,"amount":amount}
+        response=requests.put(api_url,json=account_json,headers=headers).json()
+        return response['message']
+    except:
+        print("There was a Error in earn_gem")
