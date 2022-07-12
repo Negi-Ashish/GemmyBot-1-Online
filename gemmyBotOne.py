@@ -216,21 +216,21 @@ async def info(ctx,command):
             info_message="""\n amount is the number of gems you want to transfer
                             \nThis command will help you to deposit your gems from your wallet to your bank account.
                             \nYou can only transfer amount smaller than equal to your wallet balance."""
-            em = discord.Embed(title = f"<:3755:994261485649920001> Syntax:`!gemmy deposit amount`",color =discord.Color.blue(),description=info_message)
+            em = discord.Embed(title = f"<:3755:994261485649920001> Syntax:`!gemmy deposit 'amount'`",color =discord.Color.blue(),description=info_message)
 
         elif command=="withdraw":
             info_message="""\n amount is the number of gems you want to transfer
                             \nThis command will help you to withdraw your gems from your bank to your wallet.
                             \nYou can only transfer amount smaller than equal to your bank balance."""
-            em = discord.Embed(title = f"<:3755:994261485649920001> Syntax:`!gemmy withdraw amount`",color =discord.Color.blue(),description=info_message)
+            em = discord.Embed(title = f"<:3755:994261485649920001> Syntax:`!gemmy withdraw 'amount'`",color =discord.Color.blue(),description=info_message)
         elif command=="bet":
-            info_message= """\n game name can be
-                             \n"SPS" (STONE PAPER SCISSOR)
-                             \n"RACE" (GEMMY RACE)
-                             \n"RTD" (ROLL THE DICE)
-                             \n amount is the number of gems you want to bet
+            info_message= """\ngame name can be:
+                             \n1."SPS" (STONE PAPER SCISSOR)
+                             \n2."RACE" (GEMMY RACE)
+                             \n3."RTD" (ROLL THE DICE)
+                             \namount is the number of gems you want to bet
                             """
-            em = discord.Embed(title = f"<:3755:994261485649920001> Syntax:`!gemmy bet game_name amount`",color =discord.Color.blue(),description=info_message)
+            em = discord.Embed(title = f"<:3755:994261485649920001> Syntax:`!gemmy bet 'game_name' 'amount'`",color =discord.Color.blue(),description=info_message)
         elif command=="fortune":
             info_message= """\nThis command will tell you your fortune for 50 gems. """
             em = discord.Embed(title = f"<:3755:994261485649920001> Syntax:`!gemmy fortune`",color =discord.Color.blue(),description=info_message)
@@ -241,7 +241,7 @@ async def info(ctx,command):
                              \nYou cannot break you FD so think before you start one.
                              \nFD gives you interest rate of 6%
                              \nYou cannont earn more than 1500 gems of interest"""
-            em = discord.Embed(title = f"<:3755:994261485649920001> Syntax:`!gemmy fd amount`",color =discord.Color.blue(),description=info_message)
+            em = discord.Embed(title = f"<:3755:994261485649920001> Syntax:`!gemmy fd 'amount'`",color =discord.Color.blue(),description=info_message)
 
         
         await ctx.send(embed = em)
