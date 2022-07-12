@@ -204,44 +204,46 @@ async def info(ctx,command):
     command = command.lower()
     try:
         if command=="balance": 
-            info_message = """Syntax:`!gemmy balance`
-                              \nThis command will create a new account for you with wallet balance and bank balance of zero.
+            info_message = """\nThis command will create a new account for you with wallet balance and bank balance of zero.
                               \nIf you alredy have a account it will display your wallet balance, bank balance and Fixed Deposit amount."""
+            em = discord.Embed(title = f"<:3755:994261485649920001> Syntax:`!gemmy balance`",color =discord.Color.blue(),description=info_message)
         elif command=="earn":
-            info_message = """Syntax:`!gemmy earn`
-                              \nThis command will let you earn random amount of gems within a interval of 4 hours.
+            info_message = """\nThis command will let you earn random amount of gems within a interval of 4 hours.
                               \nIf you encounter an error make sure you have created a account first."""
+            em = discord.Embed(title = f"<:3755:994261485649920001> Syntax:`!gemmy earn`",color =discord.Color.blue(),description=info_message)
+
         elif command=="deposit":
-            info_message="""Syntax:`!gemmy deposit amount`
-                            \n amount is the number of gems you want to transfer
+            info_message="""\n amount is the number of gems you want to transfer
                             \nThis command will help you to deposit your gems from your wallet to your bank account.
                             \nYou can only transfer amount smaller than equal to your wallet balance."""
+            em = discord.Embed(title = f"<:3755:994261485649920001> Syntax:`!gemmy deposit amount`",color =discord.Color.blue(),description=info_message)
+
         elif command=="withdraw":
-            info_message="""Syntax:`!gemmy withdraw amount`
-                            \n amount is the number of gems you want to transfer
+            info_message="""\n amount is the number of gems you want to transfer
                             \nThis command will help you to withdraw your gems from your bank to your wallet.
                             \nYou can only transfer amount smaller than equal to your bank balance."""
+            em = discord.Embed(title = f"<:3755:994261485649920001> Syntax:`!gemmy withdraw amount`",color =discord.Color.blue(),description=info_message)
         elif command=="bet":
-            info_message= """Syntax:`!gemmy bet game_name amount`
-                             \n game name can be
+            info_message= """\n game name can be
                              \n"SPS" (STONE PAPER SCISSOR)
                              \n"RACE" (GEMMY RACE)
                              \n"RTD" (ROLL THE DICE)
                              \n amount is the number of gems you want to bet
                             """
+            em = discord.Embed(title = f"<:3755:994261485649920001> Syntax:`!gemmy bet game_name amount`",color =discord.Color.blue(),description=info_message)
         elif command=="fortune":
-            info_message= """Syntax:`!gemmy fortune`
-                            \nThis command will tell you your fortune for 50 gems. """
+            info_message= """\nThis command will tell you your fortune for 50 gems. """
+            em = discord.Embed(title = f"<:3755:994261485649920001> Syntax:`!gemmy fortune`",color =discord.Color.blue(),description=info_message)
         elif command=="fd":
-            info_message= """Syntax:`!gemmy fd amount`
-                             \nThis command will help you start a Fixed Deposit of 3 days.
+            info_message= """\nThis command will help you start a Fixed Deposit of 3 days.
                              \nYou cannot make a fixed deposit of amount greater than your bank balance.
                              \nOnce you make a FD the amount is transferred to your FD account and locked for 3 days.
                              \nYou cannot break you FD so think before you start one.
                              \nFD gives you interest rate of 6%
                              \nYou cannont earn more than 1500 gems of interest"""
+            em = discord.Embed(title = f"<:3755:994261485649920001> Syntax:`!gemmy fd amount`",color =discord.Color.blue(),description=info_message)
 
-        em = discord.Embed(title = f"<:3755:994261485649920001> {command} Info",color =discord.Color.blue(),description=info_message)
+        
         await ctx.send(embed = em)
     except:
         info_message = """There was a error in Info"""
