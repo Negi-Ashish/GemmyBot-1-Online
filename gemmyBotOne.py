@@ -236,7 +236,7 @@ async def info(ctx,command):
                              \nFD gives you interest rate of 6%
                              \nYou cannont earn more than 1500 gems of interest"""
 
-        em = discord.Embed(title = f"{command} Info",color =discord.Color.blue(),description=info_message)
+        em = discord.Embed(title = f"<:3755:994261485649920001>{command} Info",color =discord.Color.blue(),description=info_message)
     except:
         info_message = """There was a error in Info"""
         em = discord.Embed(title = f"<:3755:994261485649920001>Info",color =discord.Color.red(),description=info_message)
