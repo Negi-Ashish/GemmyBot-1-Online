@@ -4,7 +4,7 @@ import discord;
 
 
 
-class Questionnaire(ui.Modal, title='Questionnaire Response'):
+class Questionnaire(ui.Modal):
 
     def __init__(self, ctx,client, title: str = ..., timeout: Optional[float] = None, custom_id: str = ...) -> None:
         super().__init__(title=title,timeout=timeout, custom_id=custom_id)

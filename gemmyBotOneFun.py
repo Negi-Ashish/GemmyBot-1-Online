@@ -259,12 +259,12 @@ async def fd_gem(userID,amount):
 
 async def gemmy_auction(ctx,client):
     try:
-        our_view = Questionnaire(ctx=ctx,client=client,title="Auction",custom_id="DONTKILLME")
+        our_view = Questionnaire(ctx = ctx,client=client,title="Auction")
         await ctx.send("Bet amount",view=our_view)
         return 
 
     except Exception as e:
         print(e)
-        info_message = """You currently dont have a account. Type '!gemmy balance' to create a account"""
-        em = discord.Embed(title = f"Create your free account today!",color =discord.Color.red(),description=info_message)
+        info_message = """You dont have access to run this command"""
+        em = discord.Embed(title = f"<:3755:994261485649920001> Error",color =discord.Color.red(),description=info_message)
         await ctx.send(embed = em)
