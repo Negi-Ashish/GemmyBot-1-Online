@@ -262,7 +262,8 @@ async def gemmy_auction(ctx,client):
         modal = MyModal()
         print("after view created")
         # await ctx.interaction.response.send_modal(modal)
-        await ctx.interaction.response.send_modal(modal)
+        # await ctx.interaction.response.send_modal(modal)
+        await ctx.send("Choose Your Gemmy!",view=modal)
         print("after view passed")
         return 
 
