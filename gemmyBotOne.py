@@ -264,7 +264,7 @@ async def info(ctx,command):
 
 servers = ['989096046875512852']
 
-@client.command(guild_ids = servers, name= "modal")
+@client.command()
 async def auction(ctx):
     await gemmy_auction(ctx,client)
     
