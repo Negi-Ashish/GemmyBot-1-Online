@@ -10,9 +10,8 @@ class Questionnaire(ui.Modal,title="Auction"):
     #     # self.client = client
     #     # self.ctx = ctx
 
-    name = ui.TextInput(label='Name')
-    answer = ui.TextInput(label='Answer', style=discord.TextStyle.paragraph)
+    name = ui.TextInput(label='Name',style=discord.TextStyle.short,placeholder="numbers only",required=True,max_length=10,default=20)
+    # answer = ui.TextInput(label='Answer', style=discord.TextStyle.paragraph)
 
     async def on_submit(self, interaction: discord.Interaction):
-        
         await interaction.response.send_message(f'Thanks for your response, {self.name}!', ephemeral=True)
