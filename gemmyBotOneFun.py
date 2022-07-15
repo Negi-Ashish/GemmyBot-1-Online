@@ -261,7 +261,7 @@ async def gemmy_auction(ctx,client):
     try:
         our_view = Questionnaire()
         print("after view created")
-        await ctx.send("Bet amount",view=our_view)
+        await ctx.send("Bet amount",modal=our_view)
         print("after view passed")
         return 
 
