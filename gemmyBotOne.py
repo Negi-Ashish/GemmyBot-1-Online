@@ -6,7 +6,7 @@ import config.constants as const;
 import json;
 
 
-from gemmyBotOneFun import open_account,get_balance,earn_gem,SPS,check_existance,deposit_withdraw_gem,fortune_teller,RTD,RACE,fd_gem;
+from gemmyBotOneFun import open_account,get_balance,earn_gem,SPS,check_existance,deposit_withdraw_gem,fortune_teller,RTD,RACE,fd_gem,auction;
 
 # client = commands.Bot(command_prefix='!gemmy ')
 client = commands.Bot(command_prefix='!gemmy ',intents=discord.Intents.all())
@@ -248,4 +248,15 @@ async def info(ctx,command):
     except:
         info_message = """There was a error in Info"""
         em = discord.Embed(title = f"<:3755:994261485649920001>Info",color =discord.Color.red(),description=info_message)
+        await ctx.send(embed = em)
+
+
+
+@client.command()
+async def auction_command(ctx):
+    try:
+        await auction()
+    except:
+        info_message = """You dont have access to run this command"""
+        em = discord.Embed(title = f"<:3755:994261485649920001> Error",color =discord.Color.red(),description=info_message)
         await ctx.send(embed = em)

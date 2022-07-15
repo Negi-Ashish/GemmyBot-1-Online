@@ -7,7 +7,7 @@ import discord;
 import random;
 from discord.ext import commands;
 from config.gemmyrace import MySelectRace
-
+from config.gemmyauction import Questionnaire
 
 
 async def open_account(user):
@@ -255,3 +255,16 @@ async def fd_gem(userID,amount):
         return response['message']
     except:
         print("There was a Error in earn_gem")
+
+
+async def auction(ctx,client):
+    try:
+        our_view = Questionnaire(ctx,client)
+        await ctx.send("Bet amount",view=our_view)
+        return 
+
+    except Exception as e:
+        print(e)
+        info_message = """You currently dont have a account. Type '!gemmy balance' to create a account"""
+        em = discord.Embed(title = f"Create your free account today!",color =discord.Color.red(),description=info_message)
+        await ctx.send(embed = em)
