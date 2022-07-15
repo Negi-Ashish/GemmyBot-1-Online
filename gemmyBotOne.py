@@ -253,11 +253,11 @@ async def info(ctx,command):
 
 
 @client.command()
-async def auction(interaction: discord.Interaction):
+async def auction(ctx):
     try:
-        await gemmy_auction(client,interaction)
+        await gemmy_auction(ctx,client)
     except Exception as e:
         print("ERROR:",e)
         info_message = """You dont have access to run this command"""
         em = discord.Embed(title = f"<:3755:994261485649920001> Error",color =discord.Color.red(),description=info_message)
-        # await ctx.send(embed = em)
+        await ctx.send(embed = em)
