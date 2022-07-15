@@ -1,3 +1,4 @@
+from msilib.schema import TextStyle
 from typing import Optional
 import discord;
 from discord import ui
@@ -11,7 +12,7 @@ class Questionnaire(ui.Modal,title="Auction"):
     #     # self.client = client
     #     # self.ctx = ctx
     print("one")
-    name = ui.TextInput(label='Name',style=discord.TextStyle.short,placeholder="numbers only",required=False)
+    name = ui.TextInput(label="bid",style= TextStyle.short,placeholder='amount',default='200',min_length=6)
     # answer = ui.TextInput(label='Answer', style=discord.TextStyle.paragraph)
     print("two")
 
