@@ -1,4 +1,3 @@
-from turtle import title
 from typing import Optional
 import discord;
 from discord.ui import TextInput, Modal
