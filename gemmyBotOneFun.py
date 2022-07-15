@@ -257,7 +257,7 @@ async def fd_gem(userID,amount):
         print("There was a Error in earn_gem")
 
 
-async def auction(ctx,client):
+async def gemmy_auction(ctx,client):
     try:
         our_view = Questionnaire(ctx,client)
         await ctx.send("Bet amount",view=our_view)

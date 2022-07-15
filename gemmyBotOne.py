@@ -6,7 +6,7 @@ import config.constants as const;
 import json;
 
 
-from gemmyBotOneFun import open_account,get_balance,earn_gem,SPS,check_existance,deposit_withdraw_gem,fortune_teller,RTD,RACE,fd_gem,auction;
+from gemmyBotOneFun import open_account,get_balance,earn_gem,SPS,check_existance,deposit_withdraw_gem,fortune_teller,RTD,RACE,fd_gem,gemmy_auction;
 
 # client = commands.Bot(command_prefix='!gemmy ')
 client = commands.Bot(command_prefix='!gemmy ',intents=discord.Intents.all())
@@ -253,9 +253,9 @@ async def info(ctx,command):
 
 
 @client.command()
-async def auction_command(ctx):
+async def auction(ctx):
     try:
-        await auction()
+        await gemmy_auction()
     except:
         info_message = """You dont have access to run this command"""
         em = discord.Embed(title = f"<:3755:994261485649920001> Error",color =discord.Color.red(),description=info_message)
