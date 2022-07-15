@@ -262,7 +262,7 @@ async def info(ctx,command):
 #         em = discord.Embed(title = f"<:3755:994261485649920001> Error",color =discord.Color.red(),description=info_message)
 #         await ctx.send(embed = em)
 
-servers = ['989096046875512852']
+
 
 @client.command()
 async def auction(ctx):

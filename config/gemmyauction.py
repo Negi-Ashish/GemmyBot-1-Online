@@ -22,7 +22,7 @@ from discord.ui import TextInput, Modal
 
 class MyModal(Modal):
     def __init__(self) -> None:
-        super().__init__("A Modal") #title of the modal up top
+        super().__init__(self) #title of the modal up top
         self.add_item(TextInput(label="Short Input", placeholder="Placeholder")) 
         self.add_item(
             TextInput(
