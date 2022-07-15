@@ -27,7 +27,6 @@ class MyModal(Modal,title="Auction"):
         self.add_item(
             TextInput(
                 label= "Long Input", 
-                value= "Default", #sort of like a default
                 style=discord.TextStyle.long, #long/short
             )
         )
