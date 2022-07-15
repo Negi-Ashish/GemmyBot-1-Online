@@ -7,7 +7,7 @@ import discord;
 import random;
 from discord.ext import commands;
 from config.gemmyrace import MySelectRace
-from config.gemmyauction import Questionnaire
+from config.gemmyauction import MyModal
 
 
 async def open_account(user):
@@ -259,8 +259,9 @@ async def fd_gem(userID,amount):
 
 async def gemmy_auction(ctx,client):
     try:
-        modal = Questionnaire()
+        modal = MyModal()
         print("after view created")
+        # await ctx.interaction.response.send_modal(modal)
         await ctx.interaction.response.send_modal(modal)
         print("after view passed")
         return 

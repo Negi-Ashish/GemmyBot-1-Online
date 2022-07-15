@@ -251,13 +251,21 @@ async def info(ctx,command):
         await ctx.send(embed = em)
 
 
+bot = discord.Bot()
 
-@client.command()
-async def auction(ctx):
-    try:
-        await gemmy_auction(ctx,client)
-    except Exception as e:
-        print("ERROR:",e)
-        info_message = """You dont have access to run this command"""
-        em = discord.Embed(title = f"<:3755:994261485649920001> Error",color =discord.Color.red(),description=info_message)
-        await ctx.send(embed = em)
+# @client.command()
+# async def auction(ctx):
+#     try:
+#         await gemmy_auction(ctx,client)
+#     except Exception as e:
+#         print("ERROR:",e)
+#         info_message = """You dont have access to run this command"""
+#         em = discord.Embed(title = f"<:3755:994261485649920001> Error",color =discord.Color.red(),description=info_message)
+#         await ctx.send(embed = em)
+
+servers = ['989096046875512852']
+
+@bot.slash_command(guild_ids = servers, name= "modal")
+async def test(ctx):
+    await gemmy_auction(ctx,client)
+    
