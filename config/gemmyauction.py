@@ -5,9 +5,8 @@ import discord;
 
 
 class Questionnaire(ui.Modal,title="Auction"):
-    custom_id = 123
     def __init__(self,title: str = ..., timeout: Optional[float] = None, custom_id: str = ...) -> None:
-        super().__init__(title=title,timeout=timeout, custom_id=custom_id)
+        super().__init__(title=title,timeout=timeout)
         # self.client = client
         # self.ctx = ctx
 
