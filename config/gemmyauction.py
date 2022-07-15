@@ -1,3 +1,4 @@
+from turtle import title
 from typing import Optional
 import discord;
 from discord.ui import TextInput, Modal
@@ -20,7 +21,7 @@ from discord.ui import TextInput, Modal
 #         await interaction.response.send_message(f'Thanks for your response, {self.name}!', ephemeral=True)
 
 
-class MyModal(Modal):
+class MyModal(Modal,title="Auction"):
     def __init__(self) -> None:
         super().__init__() #title of the modal up top
         self.add_item(TextInput(label="Short Input", placeholder="Placeholder")) 
