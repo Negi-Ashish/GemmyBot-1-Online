@@ -5,10 +5,10 @@ import discord;
 
 
 class Questionnaire(ui.Modal,title="Auction"):
-    def __init__(self,title: str = ..., timeout: Optional[float] = None, custom_id: str = ...) -> None:
-        super().__init__(title=title,timeout=timeout)
-        # self.client = client
-        # self.ctx = ctx
+    # def __init__(self,title: str = ..., timeout: Optional[float] = None, custom_id: str = ...) -> None:
+    #     super().__init__(title=title,timeout=timeout)
+    #     # self.client = client
+    #     # self.ctx = ctx
 
     name = ui.TextInput(label='Name')
     answer = ui.TextInput(label='Answer', style=discord.TextStyle.paragraph)
