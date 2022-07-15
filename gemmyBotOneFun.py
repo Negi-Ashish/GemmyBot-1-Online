@@ -259,9 +259,9 @@ async def fd_gem(userID,amount):
 
 async def gemmy_auction(ctx,client):
     try:
-        our_view = Questionnaire()
+        modal = Questionnaire()
         print("after view created")
-        await ctx.send("Bet amount",modal=our_view)
+        await ctx.interaction.response.send_modal(modal)
         print("after view passed")
         return 
 
