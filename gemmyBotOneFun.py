@@ -259,7 +259,7 @@ async def fd_gem(userID,amount):
 
 async def gemmy_auction(ctx,client):
     try:
-        our_view = Questionnaire(title="Auction")
+        our_view = Questionnaire()
         await ctx.send("Bet amount",view=our_view)
         return 
 
