@@ -257,11 +257,12 @@ async def fd_gem(userID,amount):
         print("There was a Error in earn_gem")
 
 
-async def gemmy_auction(ctx,client):
+async def gemmy_auction(ctx,client,interaction):
     try:
         our_view = Questionnaire()
         print("after view created")
-        await ctx.send("Bet amount",view=our_view)
+        # ctx.send("Bet amount",view=our_view)
+        await interaction.response.send_message(our_view)
         print("after view passed")
         return 
 
