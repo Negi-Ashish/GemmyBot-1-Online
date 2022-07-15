@@ -6,10 +6,10 @@ import discord;
 
 class Questionnaire(ui.Modal):
 
-    def __init__(self, ctx,client, title: str = ..., timeout: Optional[float] = None, custom_id: str = ...) -> None:
+    def __init__(self,title: str = ..., timeout: Optional[float] = None, custom_id: str = ...) -> None:
         super().__init__(title=title,timeout=timeout, custom_id=custom_id)
-        self.client = client
-        self.ctx = ctx
+        # self.client = client
+        # self.ctx = ctx
 
     name = ui.TextInput(label='Name')
     answer = ui.TextInput(label='Answer', style=discord.TextStyle.paragraph)
