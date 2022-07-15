@@ -1,6 +1,6 @@
 from typing import Optional
 import discord;
-from discord.ui import InputText, Modal
+from discord.ui import TextInput, Modal
 
 
 
@@ -23,12 +23,12 @@ from discord.ui import InputText, Modal
 class MyModal(Modal):
     def __init__(self) -> None:
         super().__init__("A Modal") #title of the modal up top
-        self.add_item(InputText(label="Short Input", placeholder="Placeholder")) 
+        self.add_item(TextInput(label="Short Input", placeholder="Placeholder")) 
         self.add_item(
-            InputText(
+            TextInput(
                 label= "Long Input", 
                 value= "Default", #sort of like a default
-                style=discord.InputTextStyle.long, #long/short
+                style=discord.TextStyle.long, #long/short
             )
         )
 
