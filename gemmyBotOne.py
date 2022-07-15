@@ -251,7 +251,6 @@ async def info(ctx,command):
         await ctx.send(embed = em)
 
 
-bot = discord.Bot()
 
 # @client.command()
 # async def auction(ctx):
@@ -265,7 +264,7 @@ bot = discord.Bot()
 
 servers = ['989096046875512852']
 
-@bot.slash_command(guild_ids = servers, name= "modal")
+@client.command(guild_ids = servers, name= "modal")
 async def test(ctx):
     await gemmy_auction(ctx,client)
     
