@@ -257,7 +257,7 @@ async def fd_gem(userID,amount):
         print("There was a Error in earn_gem")
 
 
-async def gemmy_auction(ctx,client,interaction):
+async def gemmy_auction(client,interaction):
     try:
         our_view = Questionnaire()
         print("after view created")
@@ -270,4 +270,4 @@ async def gemmy_auction(ctx,client,interaction):
         print(e)
         info_message = """You dont have access to run this command"""
         em = discord.Embed(title = f"<:3755:994261485649920001> Error",color =discord.Color.red(),description=info_message)
-        await ctx.send(embed = em)
+        # await ctx.send(embed = em)
