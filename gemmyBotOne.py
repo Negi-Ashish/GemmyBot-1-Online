@@ -230,6 +230,7 @@ async def info(ctx,command):
                              \n1."SPS" (STONE PAPER SCISSOR)
                              \n2."RACE" (GEMMY RACE)
                              \n3."RTD" (ROLL THE DICE)
+                             \n4."coin-flip" (BLACK-SIDE OR WHITE-SIDE)
                              \namount is the number of gems you want to bet
                             """
             em = discord.Embed(title = f"<:3755:994261485649920001> Syntax:`!gemmy bet 'game_name' 'amount'`",color =discord.Color.blue(),description=info_message)
