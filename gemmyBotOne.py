@@ -104,7 +104,7 @@ async def bet(ctx,game_name,amount):
         elif game_name=="race":
             await RACE(ctx,client,amount,wallet_amount,bank_amount)
         elif game_name =="coin-flip":
-            await flip(ctx,client_amount,wallet_amount,bank_amount)
+            await flip(ctx,client,amount,wallet_amount,bank_amount)
 
     except:
         info_message = f"""You dont have a account yet. Typle "!gemmy balance" to create one."""
