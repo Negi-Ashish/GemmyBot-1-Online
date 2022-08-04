@@ -163,7 +163,56 @@ async def SPS(ctx,client,amount,wallet_balance,bank_balance):
         message = await ctx.send(embed=em)
 
 
+async def flip(ctx,client,amount,wallet_balance,bank_balance):
+    try:
+        info_message = "\nplease select your choice within 20 seconds."
+        em = discord.Embed(title = f" CoinFlip <:3755:994261485649920001>",color =discord.Color.green(),description=info_message)
+        possible_answer = [":white_circle:",":black_circle:"]
+        random_outcome = possible_answer[random.randrange(0,1)]
+        message = await ctx.send(embed=em)
+        await message.add_reaction('\U000026AB')
+        await message.add_reaction('\U000026AA')
+        reaction, user = await client.wait_for('reaction_add', check=lambda r, u: u.id == ctx.author.id,timeout=20.0)
+        if reaction.emoji=='\U000026AB':
+            user_played = ":black_circle:"
+            if random_outcome==":black_circle:":
+                result = "Win :heart_eyes:"
+            else:
+                result="Lose :cry:"
+        elif reaction.emoji == '\U000026AA':
+            user_played = ":white_circle:"
+            if random_outcome==":white_circle:":
+                result = "Win :heart_eyes:"
+            else:
+                result="Lose :cry:"
+        
+        if result=="Win :heart_eyes:":
+            wallet_balance=wallet_balance+amount
+            amount = f"""+{amount}"""
+            await deposit_withdraw_gem(ctx.author.id,0,wallet_balance,bank_balance,"flip")
+        else:
+            wallet_balance=wallet_balance-amount
+            amount = f"""-{amount}"""
+            await deposit_withdraw_gem(ctx.author.id,0,wallet_balance,bank_balance,"flip")
 
+
+        em = discord.Embed(title = f" CoinFlip <:3755:994261485649920001>",color =discord.Color.green(),description="<:921:992093550772760647> <:1456:992093539360051281> <:1669:992093541742415882>  <:2495:992093547069186078> <:4634:992093544238034975>")
+        em.add_field(name=f"{ctx.author.name}",value=user_played,inline=False)
+        em.add_field(name="Outcome ",value=random_outcome,inline=False)
+        em.add_field(name="Result",value = f" {result}\n",inline=False)
+        em.add_field(name="Gems", value=f" {amount} :moneybag:",inline=False)
+        em.add_field(name="Wallet Balance",value = wallet_balance)
+        em.add_field(name="Bank Balance",value = bank_balance)
+        message = await ctx.send(embed=em)
+        
+
+
+    except Exception as e:
+        sad_messages=["\nGemmy got sad as you didnt play on time.","\nYou always finish quick but today you had to be slow..?","\n I ain't got all day bro.","\n Gemmy is disappointed as you played with its feeling"]
+        info_message = sad_messages[random.randrange(0,3)]
+        em = discord.Embed(title = f"Penalty (20 gems)",color =discord.Color.red(),description=info_message)
+        await deposit_withdraw_gem(ctx.author.id,0,wallet_balance-20,bank_balance,"SPS")
+        message = await ctx.send(embed=em)
 
 
 async def fortune_teller(userID,wallet_balance,bank_balance):
@@ -244,6 +293,9 @@ async def RACE(ctx,client,amount,wallet_balance,bank_balance):
         info_message = """You currently dont have a account. Type '!gemmy balance' to create a account"""
         em = discord.Embed(title = f"Create your free account today!",color =discord.Color.red(),description=info_message)
         await ctx.send(embed = em)
+
+
+
 
 
 async def fd_gem(userID,amount):

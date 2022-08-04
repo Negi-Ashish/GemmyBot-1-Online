@@ -6,7 +6,7 @@ import config.constants as const;
 import json;
 
 
-from gemmyBotOneFun import open_account,get_balance,earn_gem,SPS,check_existance,deposit_withdraw_gem,fortune_teller,RTD,RACE,fd_gem,gemmy_auction;
+from gemmyBotOneFun import flip,open_account,get_balance,earn_gem,SPS,check_existance,deposit_withdraw_gem,fortune_teller,RTD,RACE,fd_gem,gemmy_auction;
 
 # client = commands.Bot(command_prefix='!gemmy ')
 client = commands.Bot(command_prefix='!gemmy ',intents=discord.Intents.all())
@@ -103,6 +103,8 @@ async def bet(ctx,game_name,amount):
             await RTD(ctx,amount,wallet_amount,bank_amount)
         elif game_name=="race":
             await RACE(ctx,client,amount,wallet_amount,bank_amount)
+        elif game_name =="coin-flip":
+            await flip(ctx,client_amount,wallet_amount,bank_amount)
 
     except:
         info_message = f"""You dont have a account yet. Typle "!gemmy balance" to create one."""
