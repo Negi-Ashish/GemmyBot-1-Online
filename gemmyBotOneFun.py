@@ -229,8 +229,8 @@ async def RTD(ctx,amount,wallet_balance,bank_balance):
     try:
         em = discord.Embed(title = f" RTD <:3755:994261485649920001>",color =discord.Color.green(),description="<:921:992093550772760647> <:1456:992093539360051281> <:1669:992093541742415882>  <:2495:992093547069186078> <:4634:992093544238034975>")
         bonus=False
-        dice_one = random.randrange(1,6)
-        dice_two = random.randrange(1,6)
+        dice_one = random.randrange(1,7)
+        dice_two = random.randrange(1,7)
         player_result = dice_one+dice_two
         if(dice_one==dice_two):
             bonus = True
