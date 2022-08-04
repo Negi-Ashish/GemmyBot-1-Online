@@ -169,6 +169,7 @@ async def flip(ctx,client,amount,wallet_balance,bank_balance):
         em = discord.Embed(title = f" CoinFlip <:3755:994261485649920001>",color =discord.Color.green(),description=info_message)
         possible_answer = [":white_circle:",":black_circle:"]
         random_outcome = possible_answer[random.randrange(0,1)]
+        print(random_outcome)
         message = await ctx.send(embed=em)
         await message.add_reaction('\U000026AB')
         await message.add_reaction('\U000026AA')
