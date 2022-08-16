@@ -16,7 +16,7 @@ async def open_account(user):
         return False
     else:
         try:
-            account_json = {"userId":user.id,"walletBalance":0,"bankBalance":0}
+            account_json = {"userId":user.id,"walletBalance":100,"bankBalance":100}
             headers = {"GEMMY_ACCESS_TOKEN":const.GEMMY_ACCESS_TOKEN,"Content-Type": "application/json; charset=utf-8"}
             requests.post(const.ADD_ACCOUNT, json=account_json,headers=headers)
             return True
