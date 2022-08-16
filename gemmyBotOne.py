@@ -206,7 +206,7 @@ async def info(ctx,command):
     command = command.lower()
     try:
         if command=="balance": 
-            info_message = """\nThis command will create a new account for you with wallet balance and bank balance of zero.
+            info_message = """\nThis command will create a new account for you with wallet balance and bank balance of 100 gems.
                               \nIf you alredy have a account it will display your wallet balance, bank balance and Fixed Deposit amount."""
             em = discord.Embed(title = f"<:3755:994261485649920001> Syntax:`!gemmy balance`",color =discord.Color.blue(),description=info_message)
         elif command=="earn":
